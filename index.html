@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="fr" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yang FEI (Lesliam) · Le cahier de Lesliam — portfolio AI Engineer</title>
+<meta name="description" content="Portfolio AI Engineer de Yang FEI (Lesliam), raconté comme un cahier illustré : de neuf ans d'ingénierie embarquée BLE à l'ingénierie IA complète.">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="assets/css/styles.css">
+<script>
+(function () {
+  /* Remove the no-js fallback class immediately: if JS is disabled this
+     line never runs and the CSS fallback (.no-js .reveal / .no-js [data-reveal]
+     { opacity: 1 }) keeps every section fully visible without the scroll reveal. */
+  document.documentElement.classList.remove("no-js");
+  try {
+    var stored = window.localStorage.getItem("portfolio-theme");
+    if (stored === "light" || stored === "dark") {
+      document.documentElement.setAttribute("data-theme", stored);
+    }
+  } catch (e) {
+    /* localStorage unavailable — falls back to prefers-color-scheme via CSS */
+  }
+})();
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main" data-i18n="common.skipToContent">Aller au contenu principal</a>
+<div id="aria-live-region" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="#hero">
+      <span class="brand__name" data-i18n="nav.brandName">Yang FEI</span>
+      <span class="brand__tag" data-i18n="nav.brandTag">Lesliam · AI Engineer</span>
+    </a>
+
+    <button type="button" class="nav-burger" id="nav-burger" aria-expanded="false" aria-controls="site-nav-list">
+      <span class="visually-hidden">Menu</span>
+      <span class="nav-burger__bar" aria-hidden="true"></span>
+      <span class="nav-burger__bar" aria-hidden="true"></span>
+      <span class="nav-burger__bar" aria-hidden="true"></span>
+    </button>
+
+    <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
+      <ul id="site-nav-list">
+        <li><a href="#parcours" data-i18n="nav.links.parcours">Parcours</a></li>
+        <li><a href="#competences" data-i18n="nav.links.competences">Compétences</a></li>
+        <li><a href="#projets-oc" data-i18n="nav.links.projetsOC">Projets OC</a></li>
+        <li><a href="#reflexivite" data-i18n="nav.links.reflexivite">Réflexivité</a></li>
+        <li><a href="#contact" data-i18n="nav.links.contact">Contact</a></li>
+      </ul>
+
+      <div class="header-controls">
+        <div class="lang-switch" role="group" data-i18n-attr="aria-label:nav.langSwitchLabel">
+          <button type="button" class="lang-switch__btn" data-lang="fr" aria-pressed="true">FR</button>
+          <button type="button" class="lang-switch__btn" data-lang="zh" aria-pressed="false">中文</button>
+          <button type="button" class="lang-switch__btn" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+
+        <button type="button" id="theme-toggle" class="theme-toggle" data-i18n-attr="aria-label:nav.themeToggleAria">
+          <span class="theme-toggle__icon" aria-hidden="true"></span>
+          <span id="theme-toggle-label" data-i18n="nav.themeToggleLight">Thème : clair</span>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section id="hero" class="hero section" data-reveal>
+    <div class="hero__content">
+      <p class="eyebrow" data-i18n="hero.eyebrow">AI Engineer, reconversion embarqué → IA</p>
+      <h1 class="hero__title">
+        <span class="hero__name" data-i18n="hero.title">Yang FEI</span>
+        <span class="hero__brandline" data-i18n="hero.brandLine">alias « Lesliam »</span>
+      </h1>
+      <p class="hero__subtext" data-i18n="hero.subtext">Neuf ans d'ingénierie embarquée BLE, aujourd'hui ingénierie IA complète...</p>
+      <div class="hero__ctas">
+        <a class="btn btn--primary" href="#p15-detail" data-i18n="hero.ctaProject">Voir le projet final (P15)</a>
+        <a class="btn btn--secondary" href="#competences" data-i18n="hero.ctaSkills">Voir les compétences</a>
+      </div>
+    </div>
+    <div class="hero__figure">
+      <div class="hero__frame">
+        <span class="hero__frame-tag" data-i18n="hero.chapterTag">chapitre premier</span>
+        <div class="hero__imgstack">
+          <img src="assets/mascot/06_hero.png" alt="" data-i18n-attr="alt:hero.heroImgAlt" class="hero__img hero__img--base" width="864" height="1238">
+          <img src="assets/mascot/01_waving.png" alt="" aria-hidden="true" class="hero__img hero__img--wave" width="864" height="1238">
+        </div>
+      </div>
+      <div class="hero__motif hero__motif--chip" aria-hidden="true">
+        <svg viewBox="0 0 64 64" width="40" height="40" focusable="false">
+          <rect x="18" y="18" width="28" height="28" rx="6" fill="none" stroke="currentColor" stroke-width="3"/>
+          <rect x="26" y="26" width="12" height="12" rx="2" fill="currentColor" opacity="0.28"/>
+          <g stroke="currentColor" stroke-width="3" stroke-linecap="round">
+            <line x1="24" y1="10" x2="24" y2="18"/><line x1="32" y1="10" x2="32" y2="18"/><line x1="40" y1="10" x2="40" y2="18"/>
+            <line x1="24" y1="46" x2="24" y2="54"/><line x1="32" y1="46" x2="32" y2="54"/><line x1="40" y1="46" x2="40" y2="54"/>
+            <line x1="10" y1="24" x2="18" y2="24"/><line x1="10" y1="32" x2="18" y2="32"/><line x1="10" y1="40" x2="18" y2="40"/>
+            <line x1="46" y1="24" x2="54" y2="24"/><line x1="46" y1="32" x2="54" y2="32"/><line x1="46" y1="40" x2="54" y2="40"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule" aria-hidden="true"><span></span></div>
+
+  <section id="parcours" class="section parcours" data-reveal>
+    <div class="section-head">
+      <p class="kicker" data-i18n="parcours.kicker">Le parcours, raconté en quatre chapitres</p>
+      <h2 data-i18n="parcours.storyTitle">D'un SoC BLE à un agent IA</h2>
+      <p data-i18n="parcours.intro">Neuf ans d'ingénierie embarquée automobile...</p>
+    </div>
+  </section>
+
+  <div class="story" id="story" aria-label="Parcours illustré"></div>
+
+  <div class="rule" aria-hidden="true"><span></span></div>
+
+  <section id="competences" class="section competences" data-reveal>
+    <div class="section-head">
+      <p class="kicker" data-i18n="competences.kicker">L'atelier</p>
+      <h2 data-i18n="competences.title">Compétences</h2>
+      <p data-i18n="competences.intro">Quatre branches techniques...</p>
+    </div>
+
+    <div class="atelier">
+      <div class="atelier__figure">
+        <div class="frame-lite">
+          <img src="assets/mascot/eras/era_atelier.png" data-i18n-attr="alt:competences.atelierImgAlt" alt="Lesliam au travail dans son atelier." width="1376" height="768">
+        </div>
+        <p class="frame-cap" data-i18n="competences.atelierCaption">L'établi : quatre outils, une même culture qualité.</p>
+      </div>
+    </div>
+
+    <div class="branches" id="branches-list"></div>
+
+    <div class="soft-skills">
+      <h3 data-i18n="competences.softTitle">Soft skills</h3>
+      <p data-i18n="competences.softIntro">Six compétences transverses...</p>
+      <ul class="soft-skills__list" id="soft-skills-list"></ul>
+    </div>
+  </section>
+
+  <div class="rule" aria-hidden="true"><span></span></div>
+
+  <section id="projets-oc" class="section projets-oc" data-reveal>
+    <div class="section-head">
+      <p class="kicker" data-i18n="projetsOC.kicker">La bibliothèque des travaux</p>
+      <h2 data-i18n="projetsOC.title">Projets OpenClassrooms</h2>
+      <p data-i18n="projetsOC.intro">Une sélection de livrables représentatifs...</p>
+    </div>
+
+    <div class="oc-grid" id="oc-cards"></div>
+
+    <div class="oc-index">
+      <div class="oc-index__head">
+        <h3 class="oc-index__title" id="oc-index-title" data-i18n="projetsOC.allTitle">Tous les projets</h3>
+        <span class="oc-index__meta" data-i18n="projetsOC.allMeta">P2 – P15 · 14 projets</span>
+      </div>
+      <ul class="oc-index__list" id="oc-index-list" role="list" aria-labelledby="oc-index-title"></ul>
+    </div>
+
+    <div class="p15-detail" id="p15-detail">
+      <p class="kicker" data-i18n="projet.kicker">Le focus · Approfondissement du projet final</p>
+      <h3 data-i18n="projet.title">Projet final · P15 : Coach Vocal FR</h3>
+      <p class="projet__context" data-i18n="projet.context">Un partenaire d'entraînement oral...</p>
+
+      <div class="projet__need">
+        <h4 data-i18n="projet.needTitle">Pourquoi un terminal vocal dédié</h4>
+        <p data-i18n="projet.needText">La pratique orale exige la voix...</p>
+      </div>
+
+      <div class="arch-figure">
+        <h4 data-i18n="projet.archTitle">Architecture retenue : une cascade edge / serveur</h4>
+        <div class="frame-lite frame-lite--fixed-light">
+          <img
+            class="arch-figure__img"
+            src="assets/arch/architecture_fr.png"
+            data-i18n-attr="src:projet.archImg;alt:projet.archImgAlt"
+            alt="Illustration dessinée à la main de l'architecture cascade edge/serveur du Coach Vocal FR : terminal ESP32-S3 relié en Wi-Fi à un serveur local RTX 5080."
+            width="1376" height="768" loading="lazy" aria-describedby="arch-longdesc">
+        </div>
+        <div class="arch-figure__privacy-wrap">
+          <p class="arch-figure__privacy" data-i18n="projet.archNodes.privacyNote">Aucune donnée ne sort du réseau local.</p>
+        </div>
+        <p id="arch-longdesc" class="visually-hidden"></p>
+      </div>
+
+      <div class="pillars">
+        <h4 data-i18n="projet.pillarsTitle">Deux piliers méthodologiques IA</h4>
+        <div class="pillars__grid">
+          <div class="pillar pillar--kws">
+            <h5 data-i18n="projet.pillar1.title">Cycle de vie du modèle de mot d'éveil (KWS)</h5>
+            <ol class="pillar__steps" id="pillar1-steps"></ol>
+          </div>
+          <div class="pillar pillar--behavior">
+            <h5 data-i18n="projet.pillar2.title">Comportement du coach : fine-tuning vs prompting</h5>
+            <p data-i18n="projet.pillar2.text">Le fine-tuning local (SFT/DPO)...</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="method">
+        <h4 data-i18n="projet.methodTitle">Méthode d'exécution</h4>
+        <p data-i18n="projet.methodText">Sprint de 4 semaines...</p>
+      </div>
+
+      <div class="projet__links">
+        <a class="btn btn--primary" href="https://github.com/Lesliam/openclassrooms-project15" target="_blank" rel="noopener noreferrer">
+          <span data-i18n="projet.repoLabel">Voir le dépôt public</span>
+        </a>
+        <span class="btn btn--disabled" aria-disabled="true">
+          <span data-i18n="projet.reportLabel">Rapport de conduite de projet</span>
+          <span aria-hidden="true"> · </span>
+          <span data-i18n="projet.reportComingSoon">à venir</span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule" aria-hidden="true"><span></span></div>
+
+  <section id="reflexivite" class="section reflexivite" data-reveal>
+    <div class="section-head">
+      <p class="kicker" data-i18n="reflexivite.kicker">Le carnet de marge</p>
+      <h2 data-i18n="reflexivite.title">Réflexivité</h2>
+      <p data-i18n="reflexivite.intro">Ce que je referais autrement...</p>
+    </div>
+    <div class="marginalia qa-list" id="qa-list"></div>
+  </section>
+
+  <div class="rule" aria-hidden="true"><span></span></div>
+
+  <section id="contact" class="section contact" data-reveal>
+    <div class="section-head">
+      <p class="kicker" data-i18n="contact.kicker">Le mot de la fin</p>
+      <h2 data-i18n="contact.title">Contact & objectif</h2>
+    </div>
+    <div class="contact__grid">
+      <div class="contact__objective">
+        <h3 data-i18n="contact.objectiveTitle">Objectif professionnel</h3>
+        <p data-i18n="contact.objectiveText">Un poste d'AI Engineer...</p>
+      </div>
+      <div class="contact__languages">
+        <h3 data-i18n="contact.languagesTitle">Langues</h3>
+        <ul class="languages-list" id="contact-languages-list"></ul>
+      </div>
+      <div class="contact__links">
+        <h3 data-i18n="contact.linksTitle">Liens</h3>
+        <ul class="contact__links-list">
+          <li><a href="https://github.com/Lesliam" target="_blank" rel="noopener noreferrer"><span data-i18n="contact.githubLabel">GitHub</span></a></li>
+          <li><a href="https://www.linkedin.com/in/yang-fei-5b853670" target="_blank" rel="noopener noreferrer"><span data-i18n="contact.linkedinLabel">LinkedIn</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-motif" aria-hidden="true">
+    <svg viewBox="0 0 64 64" width="28" height="28" focusable="false">
+      <rect x="18" y="18" width="28" height="28" rx="6" fill="none" stroke="currentColor" stroke-width="3"/>
+      <rect x="26" y="26" width="12" height="12" rx="2" fill="currentColor" opacity="0.28"/>
+      <g stroke="currentColor" stroke-width="3" stroke-linecap="round">
+        <line x1="24" y1="10" x2="24" y2="18"/><line x1="32" y1="10" x2="32" y2="18"/><line x1="40" y1="10" x2="40" y2="18"/>
+        <line x1="24" y1="46" x2="24" y2="54"/><line x1="32" y1="46" x2="32" y2="54"/><line x1="40" y1="46" x2="40" y2="54"/>
+        <line x1="10" y1="24" x2="18" y2="24"/><line x1="10" y1="32" x2="18" y2="32"/><line x1="10" y1="40" x2="18" y2="40"/>
+        <line x1="46" y1="24" x2="54" y2="24"/><line x1="46" y1="32" x2="54" y2="32"/><line x1="46" y1="40" x2="54" y2="40"/>
+      </g>
+    </svg>
+  </div>
+  <p data-i18n="contact.footerNote">Yang FEI · alias Lesliam · Portfolio AI Engineer 2026</p>
+</footer>
+
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

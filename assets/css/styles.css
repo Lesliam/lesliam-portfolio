@@ -1,0 +1,717 @@
+/* ==========================================================================
+   Yang FEI · Lesliam — "Le cahier de Lesliam" AI Engineer Portfolio
+   Storybook / bande-dessinee cadence: warm greige paper, terracotta + denim
+   ink, serif narration voice (font-narr) for prose, sans (font-display) for
+   UI chrome, mono (font-mono) for metadata. Pure CSS, no framework, no
+   external font/CDN. Light + dark themes, both WCAG AA.
+   ========================================================================== */
+
+:root {
+  /* palette — warm-neutral greige base, near-neutral charcoal ink, terracotta + denim accents
+     (light, default). A deliberate middle ground: warmer and softer than a cold slate, but off
+     the banned "cream + espresso" premium-consumer default. Surface cards carry a touch of warmth
+     so the page reads clean-but-human and frames the warm hand-drawn mascot art. All pairs WCAG AA. */
+  --color-paper: #f1efe9;
+  --color-paper-alt: #e9e6df;
+  --color-paper-deep: #ded9ce;
+  --color-line: #d2ccc0;
+  --color-line-strong: color-mix(in srgb, var(--color-ink) 22%, var(--color-line));
+  --color-ink: #232220;
+  --color-ink-soft: #55504a;
+  --color-ink-faint: #5c574e;
+  --color-surface: #faf8f3;
+
+  --color-terracotta: #c1653b;
+  --color-terracotta-soft: #f3ded1;
+  --color-terracotta-on-soft: #7a3717;
+  --color-terracotta-text: #9c4a26;
+
+  --color-denim: #3e6e8e;
+  --color-denim-soft: #d7e6ee;
+  --color-denim-on-soft: #204154;
+  --color-denim-text: #285870;
+
+  /* theme-independent: always a dark block with light text (skip link, buttons, tags) */
+  --color-inverted-bg: #232220;
+  --color-inverted-text: #faf8f3;
+  --color-inverted-text-soft: #d2ccc0;
+  --color-inverted-accent: #e8a373;
+  --color-terracotta-deep: #7a3717;
+  --color-denim-deep: #204154;
+
+  /* theme-independent: always a light card, for artwork that must stay
+     legible in both themes (black ink line art on white paper) */
+  --color-fixed-light-bg: #faf8f3;
+  --color-fixed-light-border: #232220;
+  --color-fixed-light-shadow: #ded9ce;
+
+  --font-display: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Roboto, Helvetica, Arial, sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Roboto, Helvetica, Arial, sans-serif;
+  --font-narr: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, "Songti SC", serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --radius-s: 6px;
+  --radius-m: 14px;
+  --radius-l: 28px;
+  --shadow-card: 0 6px 24px rgba(35, 34, 32, 0.09);
+  --shadow-modal: 0 20px 60px rgba(35, 34, 32, 0.28);
+
+  --measure: 68ch;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --section-gap: clamp(3rem, 8vw, 6rem);
+
+  --transition-fast: 160ms ease;
+  --transition-medium: 320ms cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-section: 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* dark theme: follows system by default, or forced via [data-theme] */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-paper: #1a1815;
+    --color-paper-alt: #22201c;
+    --color-paper-deep: #2c2925;
+    --color-line: #3c3833;
+    --color-ink: #f1efe9;
+    --color-ink-soft: #c2bcb1;
+    --color-ink-faint: #9d978c;
+    --color-surface: #201e1a;
+
+    --color-terracotta: #e2895a;
+    --color-terracotta-soft: #3a2a20;
+    --color-terracotta-on-soft: #eaa679;
+    --color-terracotta-text: #e29566;
+
+    --color-denim: #7db3d3;
+    --color-denim-soft: #1c2f3a;
+    --color-denim-on-soft: #a9cfe0;
+    --color-denim-text: #8fc2e0;
+
+    --shadow-card: 0 6px 24px rgba(0, 0, 0, 0.35);
+    --shadow-modal: 0 20px 60px rgba(0, 0, 0, 0.55);
+  }
+}
+:root[data-theme="dark"] {
+  --color-paper: #1a1815;
+  --color-paper-alt: #22201c;
+  --color-paper-deep: #2c2925;
+  --color-line: #3c3833;
+  --color-ink: #f1efe9;
+  --color-ink-soft: #c2bcb1;
+  --color-ink-faint: #9d978c;
+  --color-surface: #201e1a;
+
+  --color-terracotta: #e2895a;
+  --color-terracotta-soft: #3a2a20;
+  --color-terracotta-on-soft: #eaa679;
+  --color-terracotta-text: #e29566;
+
+  --color-denim: #7db3d3;
+  --color-denim-soft: #1c2f3a;
+  --color-denim-on-soft: #a9cfe0;
+  --color-denim-text: #8fc2e0;
+
+  --shadow-card: 0 6px 24px rgba(0, 0, 0, 0.35);
+  --shadow-modal: 0 20px 60px rgba(0, 0, 0, 0.55);
+}
+
+/* -------------------------------- reset ---------------------------------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .hero__img { transition: none; }
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: repeating-linear-gradient(to bottom, transparent 0 47px, color-mix(in srgb, var(--color-ink-faint) 12%, transparent) 47px 48px), var(--color-paper);
+  background-attachment: fixed;
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  transition: background var(--transition-medium), color var(--transition-medium);
+}
+
+img { max-width: 100%; display: block; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+h1, h2, h3, h4, h5 { font-family: var(--font-display); font-weight: 800; letter-spacing: -0.01em; line-height: 1.15; margin: 0 0 0.6em; color: var(--color-ink); }
+p { margin: 0 0 1em; max-width: var(--measure); }
+a { color: var(--color-denim-text); text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+a:hover { color: var(--color-terracotta-text); }
+
+:focus-visible {
+  outline: 3px solid var(--color-denim);
+  outline-offset: 3px;
+  border-radius: var(--radius-s);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0);
+  white-space: nowrap; border: 0;
+}
+
+.skip-link {
+  position: absolute; left: 1rem; top: -4rem;
+  background: var(--color-inverted-bg); color: var(--color-inverted-text);
+  padding: 0.75rem 1.25rem; border-radius: var(--radius-s);
+  z-index: 1000; transition: top var(--transition-fast);
+}
+.skip-link:focus { top: 1rem; }
+
+.section { padding: var(--section-gap) var(--gutter); max-width: 76rem; margin: 0 auto; }
+.section-head { max-width: 46rem; margin-bottom: 2.5rem; }
+.kicker {
+  font-family: var(--font-display); font-size: 0.78rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--color-denim-text); font-weight: 700;
+  margin: 0 0 0.6rem; display: inline-flex; align-items: center; gap: 0.6rem;
+}
+.kicker::before { content: ""; width: 30px; height: 2px; background: var(--color-terracotta); border-radius: 2px; }
+.section-head h2 { font-family: var(--font-narr); font-weight: 700; font-size: clamp(1.9rem, 3.2vw, 2.6rem); }
+.section-head p { font-family: var(--font-narr); font-size: 1.06rem; color: var(--color-ink-soft); }
+
+/* Section-level reveal: a single gentle fade + lift, triggered once when the
+   section first enters the viewport (see initReveal in main.js). Children of
+   the section stagger in on top of it (below) for a layered, editorial feel
+   rather than the whole block popping in at once. No scale: a whole-section
+   zoom reads as heavier motion than the content itself justifies. */
+[data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity var(--transition-section), transform var(--transition-section); }
+[data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+
+.section[data-reveal] > * {
+  opacity: 0; transform: translateY(18px);
+  transition: opacity var(--transition-section), transform var(--transition-section);
+}
+.section[data-reveal].is-visible > * { opacity: 1; transform: translateY(0); }
+.section[data-reveal] > *:nth-child(1) { transition-delay: 0ms; }
+.section[data-reveal] > *:nth-child(2) { transition-delay: 90ms; }
+.section[data-reveal] > *:nth-child(3) { transition-delay: 170ms; }
+.section[data-reveal] > *:nth-child(4) { transition-delay: 250ms; }
+.section[data-reveal] > *:nth-child(n+5) { transition-delay: 320ms; }
+
+/* Standalone .reveal marker: used on dynamically-rendered nodes that live
+   outside a [data-reveal] section (the parcours story panels), so each one
+   fades in individually as it scrolls into view. Same visibility contract
+   as [data-reveal] above. */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity var(--transition-section), transform var(--transition-section); }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+/* Defense in depth: if JS never runs (disabled, blocked, or errors before
+   initReveal), [data-reveal]/.reveal content must never stay invisible. */
+.no-js [data-reveal],
+.no-js .section[data-reveal] > *,
+.no-js .reveal { opacity: 1 !important; transform: none !important; }
+
+.rule { max-width: 76rem; margin: 0 auto; padding: 1.25rem var(--gutter); display: flex; align-items: center; gap: 1rem; }
+.rule::before, .rule::after {
+  content: ""; height: 1px; flex: 1;
+  background-image: repeating-linear-gradient(to right, var(--color-line-strong) 0 8px, transparent 8px 16px);
+}
+.rule span { width: 8px; height: 8px; border-radius: 50%; border: 2px solid var(--color-line-strong); flex: 0 0 auto; }
+
+/* buttons */
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5em;
+  padding: 0.85em 1.6em; border-radius: 999px;
+  font-family: var(--font-body); font-weight: 600; font-size: 0.98rem;
+  text-decoration: none; border: 2px solid transparent; cursor: pointer;
+  transition: transform var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast);
+}
+.btn--primary { background: var(--color-terracotta-deep); color: var(--color-inverted-text); }
+.btn--primary:hover { background: var(--color-terracotta-deep); color: var(--color-inverted-text); transform: translateY(-2px); box-shadow: var(--shadow-card); }
+.btn--secondary { background: transparent; border-color: var(--color-ink); color: var(--color-ink); }
+.btn--secondary:hover { background: var(--color-inverted-bg); border-color: var(--color-inverted-bg); color: var(--color-inverted-text); }
+.btn--disabled { background: var(--color-paper-deep); color: var(--color-ink-faint); cursor: not-allowed; }
+
+/* -------------------------------- header --------------------------------- */
+
+.site-header {
+  position: sticky; top: 0; z-index: 200;
+  background: var(--color-paper);
+  background: color-mix(in srgb, var(--color-paper) 92%, transparent);
+  backdrop-filter: saturate(140%) blur(6px);
+  border-bottom: 1px solid var(--color-line);
+}
+.site-header__inner {
+  max-width: 76rem; margin: 0 auto; padding: 1rem var(--gutter);
+  display: flex; align-items: center; justify-content: space-between; gap: 1.25rem;
+  flex-wrap: wrap;
+}
+.brand { display: flex; flex-direction: column; gap: 0.3rem; text-decoration: none; line-height: 1.15; padding: 0.1rem 0; }
+.brand__name { font-family: var(--font-narr); font-weight: 700; font-size: 1.35rem; color: var(--color-ink); }
+.brand__tag { font-size: 0.66rem; letter-spacing: 0.1em; color: var(--color-ink-faint); text-transform: uppercase; font-family: var(--font-display); }
+
+.nav-burger {
+  display: none; flex-direction: column; gap: 4px;
+  background: none; border: none; padding: 0.5rem; cursor: pointer;
+}
+.nav-burger__bar { width: 22px; height: 2px; background: var(--color-ink); border-radius: 2px; }
+
+.site-nav { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+.site-nav ul { display: flex; gap: 1.1rem; flex-wrap: wrap; }
+.site-nav a {
+  text-decoration: none; color: var(--color-ink-soft); font-weight: 600; font-size: 0.92rem;
+  padding: 0.35rem 0.1rem; border-bottom: 2px solid transparent;
+  transition: border-color var(--transition-fast), color var(--transition-fast);
+}
+.site-nav a:hover { color: var(--color-terracotta-text); border-color: var(--color-terracotta); }
+
+.header-controls { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+
+.lang-switch { display: flex; gap: 0.25rem; background: var(--color-paper-alt); border-radius: 999px; padding: 3px; }
+.lang-switch__btn {
+  border: none; background: transparent; padding: 0.35rem 0.7rem; border-radius: 999px;
+  font-size: 0.8rem; font-weight: 700; cursor: pointer; color: var(--color-ink-soft);
+}
+.lang-switch__btn[aria-pressed="true"] { background: var(--color-inverted-bg); color: var(--color-inverted-text); }
+
+.theme-toggle {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  border: 1px solid var(--color-line); background: var(--color-surface);
+  border-radius: 999px; padding: 0.35rem 0.75rem; font-size: 0.78rem;
+  color: var(--color-ink-soft); cursor: pointer;
+}
+.theme-toggle__icon { width: 8px; height: 8px; border-radius: 999px; background: var(--color-terracotta); border: 1px solid var(--color-ink); }
+
+/* --------------------------------- hero ----------------------------------- */
+
+.hero {
+  display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center;
+  gap: 2rem; padding-top: clamp(2.5rem, 6vw, 5rem);
+  position: relative;
+}
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--color-terracotta-text); font-weight: 700; margin-bottom: 0.75rem;
+  display: inline-flex; align-items: center; gap: 0.6rem;
+}
+.eyebrow::before { content: ""; width: 30px; height: 2px; background: var(--color-terracotta); border-radius: 2px; }
+.hero__title { display: flex; flex-direction: column; gap: 0.15em; margin-bottom: 0.9rem; }
+.hero__name { font-family: var(--font-narr); font-size: clamp(2.8rem, 6.5vw, 4.6rem); font-weight: 700; letter-spacing: -0.01em; }
+.hero__brandline { font-family: var(--font-narr); font-size: 1.15rem; color: var(--color-denim-text); font-style: italic; }
+.hero__subtext {
+  font-family: var(--font-narr); font-size: 1.18rem; color: var(--color-ink-soft);
+  font-weight: 400; max-width: 40ch;
+}
+.hero__subtext::first-letter {
+  float: left; font-size: 3em; line-height: 0.78; font-weight: 700;
+  color: var(--color-terracotta); padding: 0.03em 0.1em 0 0;
+}
+.hero__ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
+.hero__figure {
+  position: relative; display: flex; justify-content: center; align-items: center;
+  padding: 0.5rem; aspect-ratio: 3 / 4; max-width: 340px; margin: 0 auto;
+}
+.hero__frame {
+  position: relative; width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid var(--color-ink); border-radius: 20px;
+  background: var(--color-surface); padding: 0.85rem; overflow: hidden;
+  box-shadow: 10px 10px 0 var(--color-paper-deep);
+}
+.hero__frame-tag {
+  position: absolute; z-index: 2; top: 0.75rem; left: 0.75rem;
+  font-family: var(--font-narr); font-style: italic; font-size: 0.76rem;
+  color: var(--color-ink-faint); background: var(--color-paper);
+  padding: 0.1rem 0.55rem; border: 1px solid var(--color-line); border-radius: 999px;
+}
+.hero__imgstack {
+  position: relative; width: 100%; height: 100%; max-width: 280px;
+  display: flex; justify-content: center; align-items: center; will-change: transform;
+}
+.hero__img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 18px 30px rgba(36, 31, 28, 0.14)); transition: opacity 0.35s ease; }
+.hero__img--base { position: relative; opacity: 1; }
+.hero__img--wave { position: absolute; inset: 0; opacity: 0; }
+/* Pose swap on hover/focus: crossfades both layers (base out, wave in) rather
+   than only fading the wave in, because the two poses differ at the hip/
+   pocket hand -- a one-way fade would let the base pose's hand ghost through
+   the wave image's transparent region. Gated to real hover-capable pointers
+   so touch devices never land in a stuck half-faded state. */
+@media (hover: hover) and (pointer: fine) {
+  .hero__figure:hover .hero__img--base,
+  .hero__figure:focus-within .hero__img--base { opacity: 0; }
+  .hero__figure:hover .hero__img--wave,
+  .hero__figure:focus-within .hero__img--wave {
+    opacity: 1;
+    /* Pivot near the feet so they stay planted while the head/raised hand
+       describe the widest arc of the sway -- reads as an eager greeting. */
+    transform-origin: 50% 92%;
+    /* Delay lets the crossfade start before the sway kicks in. */
+    animation: hero-wave 0.9s ease-in-out 0.15s infinite;
+  }
+}
+/* Gentle pendulum sway for the wave pose, active only while .hero__img--wave
+   is visible (see hover/focus rule above) -- never applied at rest, so it
+   doesn't sway invisibly at opacity 0. */
+@keyframes hero-wave {
+  0%, 100% { transform: rotate(-4.5deg); }
+  50%      { transform: rotate(4.5deg); }
+}
+.hero__motif--chip { position: absolute; top: 3%; right: 3%; color: var(--color-terracotta); opacity: 0.55; z-index: 1; }
+
+/* ---------------------------- parcours (illustrated story) ----------------- */
+
+.story { max-width: 76rem; margin: 0 auto; padding: 0 var(--gutter) clamp(1rem, 3vw, 2rem); position: relative; }
+.story::before {
+  content: ""; position: absolute; top: 2rem; bottom: 3rem; left: 50%;
+  width: 2px; transform: translateX(-50%);
+  background-image: repeating-linear-gradient(to bottom, var(--color-line-strong) 0 8px, transparent 8px 18px);
+}
+.chapter {
+  position: relative; display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; padding: clamp(2rem, 5vw, 3.5rem) 0;
+}
+.panel {
+  position: relative; border: 2px solid var(--color-ink); border-radius: 22px;
+  background: var(--color-surface); padding: 0.6rem; box-shadow: 12px 12px 0 var(--color-paper-deep);
+  /* Capped rather than left to fill the 1fr grid track: at wide viewports the
+     track alone renders the era scene far larger than the story needs. The
+     cap shrinks the image (~30% narrower) while keeping both grid columns
+     equal-width, so the odd/even alternating layout stays symmetric even
+     though `order` swaps which track the panel lands in. */
+  max-width: 380px; margin-inline: auto;
+}
+.panel__img { border-radius: 16px; width: 100%; height: auto; aspect-ratio: 1200 / 896; object-fit: contain; }
+.panel__no {
+  position: absolute; z-index: 2; top: -18px; left: -18px;
+  width: 56px; height: 56px; border-radius: 50%; background: var(--color-terracotta); color: #fff;
+  font-family: var(--font-narr); font-weight: 700; font-size: 1.5rem;
+  display: grid; place-items: center; border: 2px solid var(--color-ink);
+  box-shadow: 4px 4px 0 var(--color-paper-deep);
+}
+.tale__chap {
+  font-family: var(--font-display); font-size: 0.74rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--color-denim-text); font-weight: 700; margin: 0 0 0.5rem;
+}
+.tale h3 { font-family: var(--font-narr); font-weight: 700; font-size: clamp(1.5rem, 3.4vw, 2.1rem); margin: 0 0 0.9rem; }
+.tale__lead {
+  font-family: var(--font-narr); font-size: 1.06rem; color: var(--color-ink-soft);
+  margin: 0 0 1.1rem; max-width: 42ch;
+}
+.tale__lead::first-letter {
+  float: left; font-family: var(--font-narr); font-size: 2.9em;
+  line-height: 0.72; padding: 0.04em 0.1em 0 0; color: var(--color-terracotta); font-weight: 700;
+}
+.stamps { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.4rem; }
+.stamp {
+  font-family: var(--font-display); font-size: 0.78rem; font-weight: 500;
+  padding: 0.32rem 0.7rem; border-radius: 999px; border: 1px solid var(--color-line);
+  color: var(--color-ink-soft); background: var(--color-paper);
+}
+.stamp b { font-weight: 700; color: var(--color-denim-text); font-variant-numeric: tabular-nums; font-family: var(--font-mono); }
+.chapter:nth-child(even) .panel { order: 2; box-shadow: -12px 12px 0 var(--color-paper-deep); }
+.chapter:nth-child(even) .tale { order: 1; }
+.chapter:nth-child(even) .panel__no { left: auto; right: -18px; box-shadow: -4px 4px 0 var(--color-paper-deep); }
+.chapter::after {
+  content: ""; position: absolute; top: 50%; left: 50%;
+  width: 14px; height: 14px; border-radius: 50%; background: var(--color-paper);
+  border: 2px solid var(--color-ink); transform: translate(-50%, -50%); z-index: 3;
+}
+
+/* ------------------------------ competences -------------------------------- */
+
+/* The atelier scene is now a full-width banner on its own row, above the
+   four branch cards -- not a cramped side-by-side split. */
+.atelier { margin-bottom: clamp(1.5rem, 4vw, 2.5rem); }
+.atelier__figure { position: relative; }
+.frame-lite {
+  border: 2px solid var(--color-ink); border-radius: 20px; background: var(--color-surface);
+  padding: 0.6rem; box-shadow: 10px 10px 0 var(--color-paper-deep);
+}
+/* The atelier scene is a wide 1376x768 (~16:9) illustration, unlike the
+   portrait mascot poses elsewhere -- no forced aspect-ratio here so its own
+   intrinsic ratio drives the height instead of cropping it into a tall strip. */
+.frame-lite img { border-radius: 14px; width: 100%; height: auto; object-fit: contain; }
+.frame-cap { font-family: var(--font-narr); font-style: italic; color: var(--color-ink-faint); font-size: 0.92rem; margin: 0.8rem 0.2rem 0; text-align: center; }
+
+/* Four branch cards, symmetric 1x4 row. Each column alternates a terracotta /
+   denim accent (top edge + filled skill dots) -- no numbering, the accent
+   colour itself is the visual index. The accent edge is an inset shadow
+   rather than a border so it follows the card's rounded top corners
+   instead of cutting a straight line across them. */
+.branches { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(1rem, 2vw, 1.5rem); align-items: stretch; margin-bottom: 2.5rem; }
+.branch-card {
+  display: flex; flex-direction: column;
+  background: var(--color-surface); border: 1px solid var(--color-line);
+  border-radius: var(--radius-l); padding: 1.6rem 1.5rem 1.75rem;
+  box-shadow: inset 0 3px 0 var(--accent), var(--shadow-card);
+}
+.branch-card:nth-child(odd) { --accent: var(--color-terracotta); }
+.branch-card:nth-child(even) { --accent: var(--color-denim); }
+.branch-card__head { display: flex; align-items: center; margin-bottom: 0.5rem; }
+.branch-card__glyph { color: var(--color-ink); }
+.branch-card__glyph svg { display: block; }
+.branch-card__title { font-family: var(--font-display); font-size: 1.2rem; margin: 0 0 1.1rem; border-bottom: 2px solid var(--color-paper-deep); padding-bottom: 0.5rem; }
+.branch-card__skills { display: flex; flex-direction: column; gap: 1rem; }
+.skill-row__top { display: flex; justify-content: space-between; align-items: baseline; gap: 0.75rem; flex-wrap: wrap; }
+.skill-row__name { font-weight: 600; }
+.skill-row__evidence { font-size: 0.78rem; color: var(--color-ink-faint); font-family: var(--font-mono); }
+.skill-bar { display: flex; gap: 5px; margin-top: 0.4rem; }
+.skill-bar__dot { width: 16px; height: 8px; border-radius: 4px; background: var(--color-paper-deep); }
+.skill-bar__dot--filled { background: var(--accent); }
+
+.soft-skills { background: var(--color-paper-alt); border-radius: var(--radius-l); padding: clamp(1.6rem, 4vw, 2.4rem); }
+.soft-skills h3 { font-family: var(--font-narr); font-size: 1.45rem; margin: 0 0 0.35rem; }
+.soft-skills > p { font-family: var(--font-narr); color: var(--color-ink-soft); margin: 0 0 1.5rem; }
+.soft-skills__list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.1rem; margin-top: 0; }
+.soft-skill { background: var(--color-surface); border-radius: var(--radius-m); padding: 1.2rem 1.25rem; border: 1px solid var(--color-line); }
+.soft-skill__title {
+  font-family: var(--font-narr); font-size: 1.02rem; color: var(--color-ink);
+  display: flex; align-items: center; gap: 0.5rem; margin: 0 0 0.4rem;
+}
+.soft-skill__title::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--color-terracotta); flex: 0 0 auto; }
+.soft-skill__proof { font-size: 0.9rem; color: var(--color-ink-soft); margin: 0; }
+
+/* --------------------------------- projet ---------------------------------- */
+
+/* P15 deep-dive: same card language as the redesigned Projets OC grid above
+   (radius-l, inset-shadow accents rather than border-tops, terracotta/denim
+   alternation, serif/sans/mono type system) so this block reads as part of
+   the same area instead of a leftover from the previous design. */
+.p15-detail { margin-top: clamp(2.5rem, 6vw, 4rem); padding-top: clamp(2rem, 5vw, 3rem); border-top: 1px dashed var(--color-line-strong); }
+.p15-detail > .kicker { margin-top: 0; }
+.p15-detail > h3 { font-family: var(--font-narr); font-size: clamp(1.5rem, 3.2vw, 2.1rem); margin-bottom: 0.6rem; }
+.projet__context { font-family: var(--font-narr); color: var(--color-ink-soft); font-size: 1.06rem; max-width: 68ch; }
+.projet__need { margin-bottom: 2rem; }
+
+/* Architecture illustration: same wide 1376x768 frame device as the atelier
+   scene above (.frame-lite), but forced to a fixed light card via the
+   --fixed-light modifier -- this is black ink line art on white paper, so
+   it must stay legible against a dark theme background. */
+.arch-figure { margin-bottom: 2.5rem; }
+.arch-figure > h4 { font-family: var(--font-narr); font-size: 1.4rem; }
+.arch-figure .frame-lite { margin-top: 1.5rem; }
+.frame-lite--fixed-light {
+  background: var(--color-fixed-light-bg);
+  border-color: var(--color-fixed-light-border);
+  box-shadow: 10px 10px 0 var(--color-fixed-light-shadow);
+}
+.arch-figure__privacy-wrap { text-align: center; }
+.arch-figure__privacy {
+  display: inline-block; font-weight: 700; color: var(--color-denim-on-soft);
+  background: var(--color-denim-soft); border-radius: 999px; padding: 0.5rem 1.1rem;
+  margin: 1.1rem 0 0;
+}
+
+.pillars { margin-bottom: 2.5rem; }
+.pillars__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1.5rem; }
+.pillar {
+  background: var(--color-surface); border: 1px solid var(--color-line);
+  border-radius: var(--radius-l); padding: 1.75rem; box-shadow: inset 0 3px 0 var(--accent), var(--shadow-card);
+}
+.pillar--kws { --accent: var(--color-terracotta); }
+.pillar--behavior { --accent: var(--color-denim); }
+.pillar__steps { display: flex; flex-direction: column; gap: 0.5rem; counter-reset: step; margin-top: 1rem; }
+.pillar__steps li { position: relative; padding-left: 2rem; font-weight: 600; counter-increment: step; }
+.pillar__steps li::before {
+  content: counter(step); position: absolute; left: 0; top: 0;
+  width: 1.5rem; height: 1.5rem; border-radius: 999px; background: var(--color-terracotta-soft);
+  color: var(--color-terracotta-on-soft); font-size: 0.78rem; display: flex; align-items: center; justify-content: center;
+}
+
+.method { background: var(--color-denim-soft); border-radius: var(--radius-l); padding: 1.75rem 2rem; margin-bottom: 2.5rem; box-shadow: inset 0 3px 0 var(--color-denim); }
+.method h4 { color: var(--color-denim-on-soft); }
+
+.projet__links { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+
+/* ------------------------------- projets oc --------------------------------- */
+
+/* The card grid: 2x3, alternating terracotta / denim accents. Left column =
+   terracotta, right column = denim (nth-child odd/even). The accent is an
+   inset top edge (not a border-top) so it follows the rounded corner
+   instead of cutting a straight line across it -- same device as
+   .branch-card in the compétences section above. */
+.oc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(1rem, 2vw, 1.5rem); align-items: stretch; }
+.oc-card {
+  position: relative; display: flex; flex-direction: column;
+  background: var(--color-surface); border: 1px solid var(--color-line);
+  border-radius: var(--radius-l); padding: 1.6rem 1.5rem 1.7rem;
+  box-shadow: inset 0 3px 0 var(--accent), var(--shadow-card);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  color: inherit; text-decoration: none;
+}
+.oc-card:nth-child(odd) { --accent: var(--color-terracotta); }
+.oc-card:nth-child(even) { --accent: var(--color-denim); }
+
+.oc-card__head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.85rem; }
+.oc-card__glyph { color: var(--color-ink); }
+.oc-card__glyph svg { display: block; }
+.oc-card__code { font-family: var(--font-mono); font-weight: 700; font-size: 0.82rem; color: var(--color-ink-faint); letter-spacing: 0.04em; }
+.oc-card__title { font-family: var(--font-narr); font-weight: 700; font-size: 1.22rem; margin: 0 0 0.5rem; line-height: 1.2; }
+.oc-card__desc { font-family: var(--font-display); font-size: 0.94rem; color: var(--color-ink-soft); margin: 0 0 1.1rem; }
+
+.oc-card__tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0 0 1.1rem; }
+.oc-card__tags li {
+  font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.02em;
+  color: var(--color-ink-soft); background: var(--color-paper-alt);
+  border: 1px solid var(--color-line); padding: 0.22rem 0.55rem; border-radius: 999px;
+}
+
+/* Footer cue sits at the card bottom; mt-auto keeps card heights aligned
+   even when descriptions run a different number of lines. */
+.oc-card__foot { margin-top: auto; display: flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; position: relative; }
+.oc-card__repo { font-family: var(--font-display); font-weight: 600; color: var(--accent); display: inline-flex; align-items: center; gap: 0.35rem; }
+.oc-card__repo svg { display: block; }
+.oc-card__private { font-family: var(--font-narr); font-style: italic; color: var(--color-ink-faint); }
+
+.oc-card--link { cursor: pointer; }
+.oc-card--link:hover, .oc-card--link:focus-visible {
+  transform: translateY(-3px); outline: none;
+  box-shadow: inset 0 3px 0 var(--accent), 0 12px 32px rgba(36, 31, 28, 0.16);
+}
+.oc-card--link:focus-visible { box-shadow: inset 0 3px 0 var(--accent), 0 0 0 3px color-mix(in srgb, var(--accent) 45%, transparent); }
+.oc-card--link:hover .oc-card__repo { text-decoration: underline; }
+
+/* Flagship P15: the grid geometry stays a clean 2x3; the hero is signalled
+   by colour, not by a size change. P15 overrides the alternation to
+   terracotta, gains a full inset ring, an elevated resting shadow, and a
+   "Projet final" pill. Symmetry preserved. */
+.oc-card--flagship {
+  --accent: var(--color-terracotta);
+  box-shadow: inset 0 0 0 1.5px var(--color-terracotta), inset 0 4px 0 var(--color-terracotta), 0 10px 30px color-mix(in srgb, var(--color-terracotta-deep) 16%, transparent);
+}
+.oc-card--flagship:hover, .oc-card--flagship:focus-visible {
+  box-shadow: inset 0 0 0 1.5px var(--color-terracotta), inset 0 4px 0 var(--color-terracotta), 0 16px 40px color-mix(in srgb, var(--color-terracotta-deep) 22%, transparent);
+}
+.oc-card__flag {
+  position: absolute; top: -0.7rem; left: 1.4rem; z-index: 2;
+  background: var(--color-terracotta); color: #fff;
+  font-family: var(--font-display); font-size: 0.66rem; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 0.3rem 0.7rem; border-radius: 999px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover easter-egg: the mascot leans in with a small speech bubble on
+   repo-linked cards. Purely decorative reinforcement -- the visually-hidden
+   opensNewTabHint (in oc-card__foot) carries the same information for
+   keyboard/screen-reader users regardless of hover state. */
+.oc-card__bubble {
+  position: absolute; top: -1.15rem; right: 0.75rem; z-index: 2;
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  opacity: 0; transform: translateY(6px) scale(0.94);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+  pointer-events: none;
+}
+.oc-card--link:hover .oc-card__bubble, .oc-card--link:focus-visible .oc-card__bubble { opacity: 1; transform: translateY(0) scale(1); }
+.oc-card__bubble-mascot { width: 64px; height: 64px; object-fit: contain; flex: 0 0 auto; filter: drop-shadow(0 4px 8px rgba(36, 31, 28, 0.18)); }
+.oc-card__bubble-text {
+  position: relative; background: var(--color-inverted-bg); color: var(--color-inverted-text);
+  font-size: 0.72rem; font-weight: 600; padding: 0.35rem 0.75rem; border-radius: 999px;
+  white-space: nowrap;
+}
+.oc-card__bubble-text::after {
+  content: ""; position: absolute; bottom: -4px; left: 12px; width: 9px; height: 9px;
+  background: var(--color-inverted-bg); clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .oc-card--link:hover, .oc-card--link:focus-visible { transform: none; }
+}
+
+/* ---- "Tous les projets" full index (P2–P15) ------------------------------
+   Deliberately NOT 14 more big cards: a compact, alternating terracotta /
+   denim row index, mono project codes + sans/serif titles, so the full
+   parcours stays scannable without competing with the six featured cards
+   above. */
+.oc-index { margin-top: 3rem; }
+.oc-index__head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
+.oc-index__title { font-family: var(--font-narr); font-weight: 700; font-size: 1.15rem; margin: 0; }
+.oc-index__meta { font-family: var(--font-mono); font-size: 0.78rem; color: var(--color-ink-faint); }
+.oc-index__list {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 0.2rem 1.5rem; list-style: none; padding: 0; margin: 0;
+}
+.oc-index__item {
+  display: flex; align-items: baseline; gap: 0.65rem;
+  padding: 0.55rem 0.15rem; border-bottom: 1px solid var(--color-line);
+}
+.oc-index__item:nth-child(odd) { --accent: var(--color-terracotta-text); }
+.oc-index__item:nth-child(even) { --accent: var(--color-denim-text); }
+.oc-index__code { font-family: var(--font-mono); font-weight: 700; font-size: 0.8rem; color: var(--accent); flex: 0 0 auto; min-width: 2.5rem; }
+.oc-index__link { font-family: var(--font-display); font-weight: 600; font-size: 0.94rem; color: var(--color-ink); text-decoration: none; }
+.oc-index__link:hover, .oc-index__link:focus-visible { color: var(--accent); text-decoration: underline; }
+
+/* ------------------------------ reflexivite ---------------------------------- */
+
+.marginalia { max-width: 62rem; }
+.qa-list { display: flex; flex-direction: column; gap: 1rem; }
+.qa-item { background: var(--color-surface); border: 1px solid var(--color-line); border-radius: var(--radius-m); padding: 0.25rem 1.5rem; }
+.qa-item__question { cursor: pointer; padding: 1.15rem 0; font-family: var(--font-narr); font-weight: 700; font-size: 1.1rem; list-style: none; }
+.qa-item__question::-webkit-details-marker { display: none; }
+.qa-item__question::before { content: "+"; display: inline-block; width: 1.4em; color: var(--color-terracotta); font-weight: 700; font-family: var(--font-display); }
+.qa-item[open] .qa-item__question::before { content: "\2212"; }
+.qa-item__body { padding-bottom: 1.5rem; color: var(--color-ink-soft); }
+.qa-item__aside {
+  margin: 1rem 0 0; padding: 1rem 1.25rem;
+  background: var(--color-denim-soft); color: var(--color-denim-on-soft); font-style: italic; border-radius: var(--radius-m);
+}
+
+/* --------------------------------- contact ------------------------------------ */
+
+.contact__grid { display: grid; grid-template-columns: 1.2fr 0.9fr 0.9fr; gap: 2rem; }
+.contact__grid h3 { font-family: var(--font-narr); font-size: 1.3rem; }
+.contact__objective p, .contact__languages p { font-family: var(--font-narr); color: var(--color-ink-soft); }
+.contact__links-list li { margin-bottom: 0.5rem; }
+
+.languages-list { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.languages-list li {
+  background: var(--color-paper-alt); border: 1px solid var(--color-line);
+  padding: 0.45rem 0.9rem; border-radius: 999px; font-size: 0.88rem; font-weight: 600;
+}
+
+.site-footer {
+  padding: 2.5rem var(--gutter) 3rem; display: flex; align-items: center; gap: 0.75rem;
+  justify-content: center; color: var(--color-ink-faint); font-size: 0.85rem; border-top: 1px solid var(--color-line);
+}
+.footer-motif { color: var(--color-terracotta); }
+
+/* ---------------------------------- responsive ---------------------------------- */
+
+@media (max-width: 940px) {
+  .branches { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .pillars__grid { grid-template-columns: 1fr; }
+  .contact__grid { grid-template-columns: 1fr; }
+  .hero { grid-template-columns: 1fr; text-align: left; }
+  .hero__figure { order: -1; max-width: 220px; margin: 0 auto; }
+  .oc-grid, .soft-skills__list { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 560px) {
+  .branches { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 860px) {
+  .story::before { display: none; }
+  .chapter { grid-template-columns: 1fr; }
+  .chapter::after { display: none; }
+  .chapter:nth-child(even) .panel, .chapter:nth-child(even) .tale { order: initial; }
+  .chapter:nth-child(even) .panel__no { right: auto; left: -18px; box-shadow: 4px 4px 0 var(--color-paper-deep); }
+}
+
+@media (max-width: 720px) {
+  .nav-burger { display: inline-flex; }
+  .site-nav {
+    display: none; flex-direction: column; align-items: flex-start; gap: 1rem;
+    position: absolute; top: 100%; left: 0; right: 0; background: var(--color-paper);
+    border-bottom: 1px solid var(--color-line); padding: 1.25rem var(--gutter);
+  }
+  .site-nav.site-nav--open { display: flex; }
+  .site-nav ul { flex-direction: column; gap: 0.75rem; }
+  .header-controls { flex-wrap: wrap; }
+}
