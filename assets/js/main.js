@@ -145,6 +145,11 @@
       + `<path d="M13 4v5M21 4v5" />`
       + `<rect x="9" y="9" width="16" height="8" rx="2" />`
       + `<path d="M17 17v3a3 3 0 0 1-3 3H7" /></svg>`,
+    "P10": `<svg width="34" height="26" viewBox="0 0 34 26" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">`
+      + `<path d="M17 5c-3-3-9-2-9 3 0 1-2 2-2 4s2 3 2 4c0 4 6 5 9 2" />`
+      + `<path d="M17 5c3-3 9-2 9 3 0 1 2 2 2 4s-2 3-2 4c0 4-6 5-9 2" />`
+      + `<path d="M17 5v18" />`
+      + `<path d="M12 10c2 0 2 2 4 2M22 10c-2 0-2 2-4 2M13 17c1-1 3-1 4 0M21 17c-1-1-3-1-4 0" /></svg>`,
     "P13": `<svg width="34" height="26" viewBox="0 0 34 26" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">`
       + `<circle cx="17" cy="6" r="3" />`
       + `<path d="M13.5 9.5c1 1.5 1 3-0.5 4.5 1.5 1 2 3 1.5 5h5c-0.5-2 0-4 1.5-5-1.5-1.5-1.5-3-0.5-4.5" />`

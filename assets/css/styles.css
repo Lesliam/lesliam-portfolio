@@ -611,6 +611,10 @@ a:hover { color: var(--color-terracotta-text); }
   --accent: var(--color-terracotta);
   box-shadow: inset 0 0 0 1.5px var(--color-terracotta), inset 0 4px 0 var(--color-terracotta), 0 10px 30px color-mix(in srgb, var(--color-terracotta-deep) 16%, transparent);
 }
+/* When the featured cards total an odd number, the flagship (always rendered
+   last) would sit alone at half width; let it span the full row as a closing
+   banner instead. Even counts keep the symmetric 2-up layout untouched. */
+.oc-card--flagship:last-child:nth-child(odd) { grid-column: 1 / -1; }
 .oc-card--flagship:hover, .oc-card--flagship:focus-visible {
   box-shadow: inset 0 0 0 1.5px var(--color-terracotta), inset 0 4px 0 var(--color-terracotta), 0 16px 40px color-mix(in srgb, var(--color-terracotta-deep) 22%, transparent);
 }

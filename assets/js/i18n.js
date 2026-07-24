@@ -201,6 +201,7 @@
           { code: `P6`, title: `Credit Scoring System (MLOps)`, desc: `Première boucle MLOps complète : cycle de vie, MLflow, reproductibilité.`, tags: [`MLOps`, `MLflow`], repo: `https://github.com/Lesliam/openclassrooms_project6` },
           { code: `P7`, title: `CultuRAG`, desc: `Chatbot de recommandation culturelle : RAG, recherche vectorielle, LLM.`, tags: [`RAG`, `LLM`], repo: `https://github.com/Lesliam/openclassrooms_project7` },
           { code: `P8`, title: `Credit Scoring API`, desc: `Mise en production d'un modèle de scoring pour Prêt à Dépenser.`, tags: [`API`, `Mise en production`], repo: `https://github.com/Lesliam/openclassrooms_project8` },
+          { code: `P10`, title: `Classification d'IRM cérébrales`, desc: `Diagnostic assisté en semi-supervisé : IRM cérébrales Normal / Cancer, 100 images étiquetées sur 1 500, embeddings ResNet50 puis label spreading.`, tags: [`Semi-supervisé`, `Santé`], repo: `https://github.com/Lesliam/openclassrooms_project10` },
           { code: `P13`, title: `Chess Opening Coach`, desc: `POC produit IA de bout en bout pour la Fédération Française des Échecs.`, tags: [`Produit IA`, `POC`], repo: `https://github.com/Lesliam/openclassrooms_project13` },
           { code: `P14`, title: `Agent de triage médical`, desc: `POC d'agent LLM : orchestration et fine-tuning.`, tags: [`Agents LLM`, `Fine-tuning`], repo: `https://github.com/Lesliam/openclassrooms_project14` },
           { code: `P15`, title: `Coach Vocal FR`, desc: `Terminal vocal edge auto-hébergé : coach oral en français, sans cloud.`, tags: [`Edge AI`, `Auto-hébergé`], repo: `https://github.com/Lesliam/openclassrooms-project15`, flagship: true }
@@ -450,6 +451,7 @@
           { code: `P6`, title: `信用评分系统 —— MLOps`, desc: `首个完整的 MLOps 闭环：生命周期管理、MLflow、可复现性。`, tags: [`MLOps`, `MLflow`], repo: `https://github.com/Lesliam/openclassrooms_project6` },
           { code: `P7`, title: `CultuRAG`, desc: `文化推荐聊天机器人：RAG、向量检索、大语言模型。`, tags: [`RAG`, `大语言模型`], repo: `https://github.com/Lesliam/openclassrooms_project7` },
           { code: `P8`, title: `信用评分 API`, desc: `为 Prêt à Dépenser 部署的评分模型生产化上线。`, tags: [`API`, `生产部署`], repo: `https://github.com/Lesliam/openclassrooms_project8` },
+          { code: `P10`, title: `脑部 MRI 分类`, desc: `半监督辅助诊断：脑部 MRI 正常 / 癌症分类，1500 张图像仅 100 张有标注，ResNet50 嵌入 + 标签传播。`, tags: [`半监督`, `医疗健康`], repo: `https://github.com/Lesliam/openclassrooms_project10` },
           { code: `P13`, title: `国际象棋开局教练`, desc: `面向法国国际象棋联合会的端到端 AI 产品概念验证。`, tags: [`AI 产品`, `概念验证`], repo: `https://github.com/Lesliam/openclassrooms_project13` },
           { code: `P14`, title: `医疗分诊智能体`, desc: `大语言模型智能体概念验证：编排调度与微调。`, tags: [`LLM 智能体`, `微调`], repo: `https://github.com/Lesliam/openclassrooms_project14` },
           { code: `P15`, title: `法语语音教练`, desc: `自托管边缘语音终端：法语口语教练，数据不出局域网。`, tags: [`边缘 AI`, `自托管`], repo: `https://github.com/Lesliam/openclassrooms-project15`, flagship: true }
@@ -699,6 +701,7 @@
           { code: `P6`, title: `Credit Scoring System (MLOps)`, desc: `First complete MLOps loop: lifecycle, MLflow, reproducibility.`, tags: [`MLOps`, `MLflow`], repo: `https://github.com/Lesliam/openclassrooms_project6` },
           { code: `P7`, title: `CultuRAG`, desc: `Cultural recommendation chatbot: RAG, vector search, LLM.`, tags: [`RAG`, `LLM`], repo: `https://github.com/Lesliam/openclassrooms_project7` },
           { code: `P8`, title: `Credit Scoring API`, desc: `Production deployment of a scoring model for Prêt à Dépenser.`, tags: [`API`, `Production`], repo: `https://github.com/Lesliam/openclassrooms_project8` },
+          { code: `P10`, title: `Brain MRI classification`, desc: `Semi-supervised assisted diagnosis: brain MRI Normal / Cancer, 100 labeled images out of 1,500, ResNet50 embeddings then label spreading.`, tags: [`Semi-supervised`, `Healthcare`], repo: `https://github.com/Lesliam/openclassrooms_project10` },
           { code: `P13`, title: `Chess Opening Coach`, desc: `End-to-end AI product proof of concept for the French Chess Federation.`, tags: [`AI product`, `POC`], repo: `https://github.com/Lesliam/openclassrooms_project13` },
           { code: `P14`, title: `Medical triage agent`, desc: `LLM agent proof of concept: orchestration and fine-tuning.`, tags: [`LLM agents`, `Fine-tuning`], repo: `https://github.com/Lesliam/openclassrooms_project14` },
           { code: `P15`, title: `French Voice Coach`, desc: `Self-hosted edge voice terminal: a French speaking coach, no cloud.`, tags: [`Edge AI`, `Self-hosted`], repo: `https://github.com/Lesliam/openclassrooms-project15`, flagship: true }
