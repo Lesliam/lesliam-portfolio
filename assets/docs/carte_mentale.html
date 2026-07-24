@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Carte mentale — MOI — AI Engineer (reconversion embarqué → IA)</title>
+<style>
+:root {
+  --bg:#0d1420; --panel:#131c2b; --panel2:#0f1826; --fg:#e8edf4;
+  --muted:#8b97a9; --line:#223047; --accent:#4db8ff; --star:#ffb454;
+  --leaf:#c4cee0;
+  --sans:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+}
+@media (prefers-color-scheme: light) {
+  :root { --bg:#eef3fa; --panel:#ffffff; --panel2:#f5f8fc; --fg:#16202e;
+    --muted:#56637a; --line:#d7e0ec; --accent:#1f6fd6; --star:#c77d18;
+    --leaf:#33405a; }
+}
+:root[data-theme="dark"] {
+  --bg:#0d1420; --panel:#131c2b; --panel2:#0f1826; --fg:#e8edf4;
+  --muted:#8b97a9; --line:#223047; --accent:#4db8ff; --star:#ffb454; --leaf:#c4cee0;
+}
+:root[data-theme="light"] {
+  --bg:#eef3fa; --panel:#ffffff; --panel2:#f5f8fc; --fg:#16202e;
+  --muted:#56637a; --line:#d7e0ec; --accent:#1f6fd6; --star:#c77d18; --leaf:#33405a;
+}
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--fg); font-family:var(--sans);
+  font-size:15px; line-height:1.55; -webkit-font-smoothing:antialiased; }
+.wrap { max-width:940px; margin:0 auto; padding:0 20px 64px; }
+header { padding:40px 0 20px; border-bottom:1px solid var(--line); margin-bottom:20px; }
+.eyebrow { font-family:var(--mono); font-size:11.5px; letter-spacing:.22em;
+  text-transform:uppercase; color:var(--accent); margin:0 0 10px; }
+h1 { margin:0; font-size:27px; font-weight:700; line-height:1.2; text-wrap:balance;
+  letter-spacing:-.01em; }
+.subtitle { color:var(--muted); font-size:13px; max-width:66ch; white-space:pre-line;
+  margin:12px 0 0; }
+.toolbar { display:flex; gap:8px; margin:18px 0 6px; }
+.toolbar button { font-family:var(--mono); font-size:12px; background:var(--panel);
+  color:var(--fg); border:1px solid var(--line); border-radius:7px; padding:6px 12px;
+  cursor:pointer; transition:border-color .12s,color .12s; }
+.toolbar button:hover { border-color:var(--accent); color:var(--accent); }
+.toolbar button:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+ul { list-style:none; margin:0; padding-left:20px; border-left:1px solid var(--line); }
+.map > ul { border-left:none; padding-left:0; }
+li { margin:5px 0; }
+details > summary { cursor:pointer; list-style:none; display:flex; align-items:baseline; }
+details > summary::-webkit-details-marker { display:none; }
+summary::before { content:"\25B8"; color:var(--muted); font-family:var(--mono);
+  width:1.1em; flex:0 0 1.1em; transition:transform .12s; }
+details[open] > summary::before { transform:rotate(90deg); }
+summary:focus-visible { outline:2px solid var(--accent); outline-offset:2px; border-radius:6px; }
+.t { display:inline-block; padding:5px 11px; border-radius:8px; background:var(--panel);
+  border:1px solid var(--line); }
+details[open] > summary > .t { border-color:var(--accent); }
+.leaf { padding-left:1.1em; }
+.leaf .t { color:var(--leaf); background:var(--panel2); }
+.stars { font-family:var(--mono); color:var(--star); letter-spacing:.05em; margin-left:2px; }
+.ext { text-decoration:none; color:var(--accent); font-weight:700; margin-left:4px; }
+.note { color:var(--muted); font-size:12.5px; margin:5px 0 8px 2em; max-width:74ch;
+  white-space:pre-line; }
+.note a, .subtitle a { color:var(--accent); }
+footer { color:var(--muted); font-family:var(--mono); font-size:11.5px; margin-top:28px;
+  padding-top:16px; border-top:1px solid var(--line); }
+@media (prefers-reduced-motion: reduce) { * { transition:none !important; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <p class="eyebrow">Carte mentale &middot; Portfolio AI Engineer &middot; Étape 2</p>
+  <h1>MOI — AI Engineer (reconversion embarqué → IA)</h1>
+  <p class="subtitle">Carte mentale Étape 2 — v2 assemblée le 2026-07-07.
+Niveaux de maîtrise: ★ = proposition à ajuster par Lesliam.
+Dépôts GitHub liés sur chaque projet (privés pour l&#x27;instant — les URLs ne changent pas lors du passage en public).</p>
+</header>
+<div class="toolbar">
+  <button type="button" onclick="document.querySelectorAll('details').forEach(d=>d.open=true)">Tout déplier</button>
+  <button type="button" onclick="document.querySelectorAll('details').forEach(d=>d.open=false)">Tout replier</button>
+</div>
+<div class="map"><ul>
+<li><details open><summary><span class="t">Parcours</span></summary><ul><li><details><summary><span class="t">9 ans embarqué BLE automobile <span class="stars">★★★★★</span></span></summary><ul><li class="leaf"><span class="t">Valeo (Créteil) 2018-07 → 2025-08 — 7 ans 2 mois</span><div class="note">Ingénieur logiciel C embarqué. Plateforme BLE projets automobiles: architecture, spécification, design, implémentation, tests unitaires et d&#x27;intégration.</div></li>
+<li class="leaf"><span class="t">IT Link 2016-07 → 2018-06 (mission Valeo)</span><div class="note">Solution BLE projet automobile. Total BLE automobile: 9 ans.</div></li>
+<li class="leaf"><span class="t">Stage MAATEL 2015 (6 mois)</span><div class="note">Évaluation solutions Bluetooth / Bluetooth Smart (électronique médicale/industrielle).</div></li>
+<li class="leaf"><span class="t">Stage laboratoire PRISME 2014 (3 mois)</span><div class="note">Traitement d&#x27;image médical en C++ (Orléans).</div></li></ul></details></li>
+<li class="leaf"><span class="t">Formation AI Engineer OpenClassrooms — 14 projets (P2-P15)</span><div class="note">Du ML classique aux agents LLM, jusqu&#x27;au portfolio P15 en cours.</div></li>
+<li><details><summary><span class="t">Formation initiale</span></summary><ul><li class="leaf"><span class="t">Polytech Orléans 2012-2015</span><div class="note">Écotechnologies Électroniques-Optiques, option Architecture autonome.</div></li>
+<li class="leaf"><span class="t">Université Maritime de Dalian 2009-2012</span><div class="note">Génie électronique et télécommunications.</div></li></ul></details></li>
+<li class="leaf"><span class="t">Langues: FR courant (TCF B2) · EN courant (TOEIC 855/990) · ZH natif</span></li></ul></details></li>
+<li><details open><summary><span class="t">Compétences techniques</span></summary><div class="note">Niveaux ★ = propositions PM du 2026-07-06, à ajuster par Lesliam.</div><ul><li><details><summary><span class="t">IA / ML</span></summary><ul><li class="leaf"><span class="t">ML classique <span class="stars">★★★★</span></span><div class="note">scikit-learn, feature engineering, métriques métier — preuves: P3, P4, P5, P6, P8.</div></li>
+<li class="leaf"><span class="t">Deep learning / Computer vision <span class="stars">★★★</span></span><div class="note">Apprentissage semi-supervisé, images médicales — preuve: P10.</div></li>
+<li class="leaf"><span class="t">NLP · LLM · RAG <span class="stars">★★★★</span></span><div class="note">RAG, embeddings, agents, prompt engineering — LangChain (P7), LangGraph (P13) — preuves: P7, P13, P14.</div></li>
+<li class="leaf"><span class="t">Fine-tuning SFT/DPO <span class="stars">★★★★</span></span><div class="note">Pratique réelle locale sur RTX 5080 — preuves: P14 + runs personnels 2026-07.</div></li>
+<li class="leaf"><span class="t">Reinforcement learning <span class="stars">★★★</span></span><div class="note">Gymnasium, politiques, reward shaping — preuve: P11.</div></li></ul></details></li>
+<li><details><summary><span class="t">MLOps</span></summary><ul><li class="leaf"><span class="t">Cycle de vie modèle · MLflow <span class="stars">★★★★</span></span><div class="note">Première boucle MLOps complète — preuve: P6.</div></li>
+<li class="leaf"><span class="t">API de serving · FastAPI · Pytest <span class="stars">★★★★</span></span><div class="note">Mise en production avec tests — preuves: P5, P8.</div></li>
+<li class="leaf"><span class="t">Quantization · monitoring · drift (en cours)</span><div class="note">Cœur méthodologique du projet P15: KWS INT8, télémétrie, cycle de retrain.</div></li></ul></details></li>
+<li><details><summary><span class="t">Embarqué</span></summary><ul><li class="leaf"><span class="t">C embarqué · Cortex-M0/M3/M4 · RTOS <span class="stars">★★★★★</span></span><div class="note">Contraintes mémoire / temps réel, 9 ans de pratique.</div></li>
+<li class="leaf"><span class="t">Pile BLE 4/5 <span class="stars">★★★★★</span></span><div class="note">Couche basse (pairing, bonding, L2CAP) + couche applicative.</div></li>
+<li class="leaf"><span class="t">Bootloader · OTA <span class="stars">★★★★</span></span><div class="note">Implémentation et intégration OTA sur SoC BLE (base LIN).</div></li>
+<li class="leaf"><span class="t">Sécurité <span class="stars">★★★★</span></span><div class="note">Tokens JWT/JWK/JWE/JWS, cryptographie RSA/ECC/HASH.</div></li>
+<li class="leaf"><span class="t">Culture de test automobile</span><div class="note">Scripts Python de tests, CANoe, CAN/LIN, cycle spéc → design → implémentation → test.</div></li></ul></details></li>
+<li><details><summary><span class="t">Infrastructure</span></summary><ul><li class="leaf"><span class="t">Linux self-hosted · GPU <span class="stars">★★★★</span></span><div class="note">Station IA auto-administrée: CachyOS, RTX 5080 16 GB, fine-tuning local, Ollama.</div></li>
+<li class="leaf"><span class="t">Stack vocal auto-hébergé</span><div class="note">Whisper (STT) + Piper (TTS) + Home Assistant via protocole Wyoming.</div></li>
+<li class="leaf"><span class="t">Docker <span class="stars">★★★★</span></span><div class="note">Conteneurisation: services self-hosted (NAS + station IA), déploiements projets OC.</div></li></ul></details></li>
+<li><details><summary><span class="t">Démo &amp; Vulgarisation <span class="stars">★★★</span></span></summary><div class="note">Prototypage rapide de POC et de démos interactives pour rendre un modèle testable et présentable (soutenance, employeurs). Ajouté à la demande du mentor (2026-07-12).</div><ul><li class="leaf"><span class="t">Gradio <span class="stars">★★★</span></span><div class="note">Interface de démo interactive pour modèles ML/LLM — preuve: POC &amp; démo du coach vocal P15.</div></li>
+<li class="leaf"><span class="t">Streamlit <span class="stars">★★★</span></span><div class="note">Applications de data/ML légères pour exploration et présentation de résultats.</div></li></ul></details></li></ul></details></li>
+<li><details open><summary><span class="t">Projets — preuves</span></summary><div class="note">Chaque projet est lié à son dépôt GitHub (preuve, exigence Étape 2).</div><ul><li class="leaf"><span class="t">P15 — Coach vocal FR (en cours) <a class="ext" href="https://github.com/Lesliam/openclassrooms-project15" target="_blank" rel="noopener" aria-label="Ouvrir le dépôt">&#8599;</a></span><div class="note">Terminal vocal edge (ESP32-S3, KWS on-device) + cerveau IA auto-hébergé (Whisper → LLM coach → Piper, LAN only). Fusion des deux carrières. POC &amp; démo interactive: Gradio / Streamlit. <a href="https://github.com/Lesliam/openclassrooms-project15" target="_blank" rel="noopener">https://github.com/Lesliam/openclassrooms-project15</a></div></li>
+<li><details><summary><span class="t">Sélection OC — les plus parlants</span></summary><ul><li class="leaf"><span class="t">P6 — Credit Scoring avec MLOps <a class="ext" href="https://github.com/Lesliam/openclassrooms_project6" target="_blank" rel="noopener" aria-label="Ouvrir le dépôt">&#8599;</a></span><div class="note">Première boucle MLOps complète. <a href="https://github.com/Lesliam/openclassrooms_project6" target="_blank" rel="noopener">https://github.com/Lesliam/openclassrooms_project6</a></div></li>
+<li class="leaf"><span class="t">P7 — CultuRAG, chatbot de recommandation culturelle <a class="ext" href="https://github.com/Lesliam/openclassrooms_project7" target="_blank" rel="noopener" aria-label="Ouvrir le dépôt">&#8599;</a></span><div class="note">RAG, recherche vectorielle, LLM. <a href="https://github.com/Lesliam/openclassrooms_project7" target="_blank" rel="noopener">https://github.com/Lesliam/openclassrooms_project7</a></div></li>
+<li class="leaf"><span class="t">P8 — Credit Scoring API (Prêt à Dépenser) <a class="ext" href="https://github.com/Lesliam/openclassrooms_project8" target="_blank" rel="noopener" aria-label="Ouvrir le dépôt">&#8599;</a></span><div class="note">API de modèle en production. <a href="https://github.com/Lesliam/openclassrooms_project8" target="_blank" rel="noopener">https://github.com/Lesliam/openclassrooms_project8</a></div></li>
+<li class="leaf"><span class="t">P13 — Chess Opening Coach (POC FFE) <a class="ext" href="https://github.com/Lesliam/openclassrooms_project13" target="_blank" rel="noopener" aria-label="Ouvrir le dépôt">&#8599;</a></span><div class="note">Produit IA de bout en bout, POC personnel. <a href="https://github.com/Lesliam/openclassrooms_project13" target="_blank" rel="noopener">https://github.com/Lesliam/openclassrooms_project13</a></div></li>
+<li class="leaf"><span class="t">P14 — POC agent de triage médical <a class="ext" href="https://github.com/Lesliam/openclassrooms_project14" target="_blank" rel="noopener" aria-label="Ouvrir le dépôt">&#8599;</a></span><div class="note">Agents LLM, orchestration, fine-tuning. <a href="https://github.com/Lesliam/openclassrooms_project14" target="_blank" rel="noopener">https://github.com/Lesliam/openclassrooms_project14</a></div></li></ul></details></li>
+<li class="leaf"><span class="t">Index complet des dépôts (P2-P15)</span><div class="note">P2: <a href="https://github.com/Lesliam/openclassrooms_project2" target="_blank" rel="noopener">https://github.com/Lesliam/openclassrooms_project2</a>
+P3: <a href="https://github.com/Lesliam/openclassrooms_project3" target="_blank" rel="noopener">https://github.com/Lesliam/openclassrooms_project3</a>
+P4: <a href="https://github.com/Lesliam/openclassrooms_project4" target="_blank" rel="noopener">https://github.com/Lesliam/openclassrooms_project4</a>
+P5: <a href="https://github.com/Lesliam/openclassrooms_project5" target="_blank" rel="noopener">https://github.com/Lesliam/openclassrooms_project5</a>
+P6: <a href="https://github.com/Lesliam/openclassrooms_project6" target="_blank" rel="noopener">https://github.com/Lesliam/openclassrooms_project6</a>
+P7: <a href="https://github.com/Lesliam/openclassrooms_project7" target="_blank" rel="noopener">https://github.com/Lesliam/openclassrooms_project7</a>
+P8: <a href="https://github.com/Lesliam/openclassrooms_project8" target="_blank" rel="noopener">https://github.com/Lesliam/openclassrooms_project8</a>
+P9: <a href="https://github.com/Lesliam/openclassrooms_project9" target="_blank" rel="noopener">https://github.com/Lesliam/openclassrooms_project9</a>
+P10: <a href="https://github.com/Lesliam/openclassrooms_project10" target="_blank" rel="noopener">https://github.com/Lesliam/openclassrooms_project10</a>
+P11: <a href="https://github.com/Lesliam/openclassrooms_project11" target="_blank" rel="noopener">https://github.com/Lesliam/openclassrooms_project11</a>
+P12: <a href="https://github.com/Lesliam/openclassrooms_project12" target="_blank" rel="noopener">https://github.com/Lesliam/openclassrooms_project12</a>
+P13: <a href="https://github.com/Lesliam/openclassrooms_project13" target="_blank" rel="noopener">https://github.com/Lesliam/openclassrooms_project13</a>
+P14: <a href="https://github.com/Lesliam/openclassrooms_project14" target="_blank" rel="noopener">https://github.com/Lesliam/openclassrooms_project14</a>
+P15: <a href="https://github.com/Lesliam/openclassrooms-project15" target="_blank" rel="noopener">https://github.com/Lesliam/openclassrooms-project15</a></div></li>
+<li><details><summary><span class="t">Infrastructure personnelle en production</span></summary><ul><li class="leaf"><span class="t">LearnForge — révision espacée (FSRS)</span><div class="note">Développé et utilisé quotidiennement.</div></li>
+<li class="leaf"><span class="t">Stack vocal Whisper/Piper/HA</span><div class="note">En production à la maison, sert le projet P15.</div></li>
+<li class="leaf"><span class="t">ai-agent-system — orchestration d&#x27;agents IA</span><div class="note">Workflows, tickets Linear, mémoire persistante.</div></li></ul></details></li></ul></details></li>
+<li><details open><summary><span class="t">Soft skills — avec preuves</span></summary><div class="note">Validés le 2026-07-06 (parcours_analysis §5e).</div><ul><li class="leaf"><span class="t">Rigueur et culture qualité</span><div class="note">Preuve: 9 ans de process qualité automobile (spéc → test → traçabilité).</div></li>
+<li class="leaf"><span class="t">Autonomie et apprentissage continu</span><div class="note">Preuve: reconversion réussie + infrastructure IA personnelle complète.</div></li>
+<li class="leaf"><span class="t">Résolution de problèmes</span><div class="note">Preuve: du debugging embarqué au debugging ML.</div></li>
+<li class="leaf"><span class="t">Communication multiculturelle et vulgarisation</span><div class="note">Preuve: trilingue FR/EN/ZH, équipes internationales.</div></li>
+<li class="leaf"><span class="t">Gestion de projet et arbitrage sous contrainte</span><div class="note">Preuves: P9 (cadrage Fashion-Insta), P15 (sprint 4 semaines, descope ladder).</div></li></ul></details></li>
+<li><details open><summary><span class="t">Réflexivité</span></summary><div class="note">Synthèse des réponses de Lesliam (parcours_analysis §5a-5d).</div><ul><li class="leaf"><span class="t">Ce que je referais autrement</span><div class="note">Mettre en place dès le départ un système de skills IA et de workflows structurés, avec audit et amélioration périodiques (loop engineering) — un outillage non révisé se dégrade en silence.</div></li>
+<li><details><summary><span class="t">Évolution de ma méthodologie</span></summary><ul><li class="leaf"><span class="t">De « tout produire moi-même » à « concevoir et auditer »</span><div class="note">L&#x27;humain conçoit le système et audite; les agents IA exécutent. Prompt engineering, skill/agent management, loop engineering.</div></li>
+<li class="leaf"><span class="t">Atouts transposés de l&#x27;automobile</span><div class="note">Requirements avant de construire; review et tests systématiques; traçabilité de toutes les étapes.</div></li>
+<li class="leaf"><span class="t">Maîtrise au niveau architecture</span><div class="note">Je ne mémorise plus chaque ligne, mais je reste capable d&#x27;expliquer n&#x27;importe quelle ligne à la demande — chaque PR passe par ma revue avec quiz de compréhension. Le zoom ligne à ligne reste disponible.</div></li></ul></details></li>
+<li class="leaf"><span class="t">Évolution de ma vision du métier</span><div class="note">Au début: « savoir utiliser l&#x27;IA ». En réalité: comprendre tout le spectre, du ML classique aux agents. Vision 2026: collaboration humain-agents — l&#x27;humain audite et conçoit, les agents exécutent.</div></li>
+<li class="leaf"><span class="t">Axes d&#x27;amélioration</span><div class="note">Apprentissage continu (les technologies IA évoluent chaque jour); dépasser mon propre plafond de conception et d&#x27;orchestration — la différenciation ne se joue plus sur l&#x27;accès à la technique.</div></li></ul></details></li>
+<li><details open><summary><span class="t">Fil rouge — croisement unique</span></summary><div class="note">9 ans de discipline embarquée (mémoire en KB, temps réel, OTA, sécurité) × ingénierie IA complète. Le projet P15 est littéralement la fusion des deux carrières.</div><ul><li class="leaf"><span class="t">Rare: Cortex-M/RTOS + fine-tuning de LLM</span><div class="note">Très peu de profils maîtrisent les deux.</div></li>
+<li class="leaf"><span class="t">Qualité automobile → MLOps</span><div class="note">Spéc → test → traçabilité transpose directement: reproductibilité, audit, rollback.</div></li>
+<li class="leaf"><span class="t">Preuves d&#x27;autonomie</span><div class="note">Infrastructure IA personnelle complète, projets personnels en production chez soi.</div></li>
+<li class="leaf"><span class="t">Trilingue FR/EN/ZH</span><div class="note">Atout pour équipes internationales.</div></li></ul></details></li>
+<li><details open><summary><span class="t">Objectif professionnel</span></summary><ul><li class="leaf"><span class="t">Edge AI / AI Engineer</span><div class="note">Cible: postes croisant embarqué et IA — edge AI, MLOps embarqué, produits IA self-hosted.</div></li></ul></details></li>
+</ul></div>
+<footer>Aperçu généré depuis carte_mentale.mm &mdash; cliquez un n&oelig;ud pour le d&eacute;plier ; &#8599; ouvre le d&eacute;p&ocirc;t GitHub.</footer>
+</div>
+</body>
+</html>

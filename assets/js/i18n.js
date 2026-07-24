@@ -27,8 +27,10 @@
         title: `Yang FEI`,
         brandLine: `alias « Lesliam »`,
         subtext: `Neuf ans d'ingénierie embarquée BLE, aujourd'hui ingénierie IA complète : le projet final fusionne les deux dans un terminal vocal auto-hébergé.`,
+        objective: `En recherche d'un poste d'AI Engineer — IA embarquée (edge) et systèmes auto-hébergés, avec un fort intérêt pour la santé (agent de triage médical, P14).`,
         ctaProject: `Voir le projet final (P15)`,
         ctaSkills: `Voir les compétences`,
+        ctaContact: `Me contacter`,
         heroImgAlt: `Lesliam, la mascotte du portfolio, debout et souriante`,
         chapterTag: `chapitre premier`
       },
@@ -69,25 +71,27 @@
       competences: {
         kicker: `L'atelier`,
         title: `Compétences`,
-        intro: `Quatre branches techniques et six soft skills, chacune reliée aux projets qui en font la preuve. Les niveaux de maîtrise ci-dessous sont une auto-évaluation éditoriale.`,
-        atelierCaption: `L'établi : quatre outils, une même culture qualité.`,
-        atelierImgAlt: `Lesliam au travail dans son atelier, entouré des outils de ses quatre branches de compétences.`,
+        intro: `Cinq branches techniques et six soft skills, chacune reliée aux projets qui en font la preuve. Les niveaux de maîtrise ci-dessous sont une auto-évaluation éditoriale.`,
+        atelierCaption: `L'établi : des outils différents, une même culture qualité.`,
+        mindMapLink: `Voir la carte mentale complète`,
+        atelierImgAlt: `Lesliam au travail dans son atelier, entouré des outils de ses branches de compétences.`,
         branches: [
           {
             id: `ia-ml`, title: `IA / Machine Learning`,
             skills: [
-              { name: `Machine learning classique`, level: 5, evidence: `P3, P4, P5, P6, P8` },
+              { name: `Machine learning classique`, level: 4, evidence: `P3, P4, P5, P6, P8` },
               { name: `Computer vision`, level: 3, evidence: `P2, P10` },
               { name: `NLP / LLM`, level: 4, evidence: `P7, P13, P14` },
               { name: `RAG (recherche augmentée)`, level: 4, evidence: `P7` },
-              { name: `Fine-tuning (SFT / DPO)`, level: 3, evidence: `P14 + runs personnels` },
+              { name: `Agents LLM · LangChain / LangGraph`, level: 4, evidence: `P7 · P13` },
+              { name: `Fine-tuning (SFT / DPO)`, level: 4, evidence: `P14 + runs personnels` },
               { name: `Apprentissage par renforcement`, level: 3, evidence: `P11` }
             ]
           },
           {
             id: `mlops`, title: `MLOps`,
             skills: [
-              { name: `MLflow (cycle de vie)`, level: 3, evidence: `P6` },
+              { name: `MLflow (cycle de vie)`, level: 4, evidence: `P6` },
               { name: `API de serving`, level: 4, evidence: `P5, P8` },
               { name: `Quantification de modèles`, level: 3, evidence: `Coach FR (P15)` },
               { name: `Monitoring / dérive`, level: 3, evidence: `Coach FR (P15)` }
@@ -107,10 +111,17 @@
             id: `infra`, title: `Infra / self-hosting`,
             skills: [
               { name: `Linux (administration)`, level: 4, evidence: `station CachyOS auto-administrée` },
-              { name: `GPU / calcul local`, level: 3, evidence: `RTX 5080, fine-tuning local` },
-              { name: `Conteneurisation`, level: 2, evidence: `en consolidation` },
+              { name: `GPU / calcul local`, level: 4, evidence: `RTX 5080, fine-tuning local` },
+              { name: `Docker · conteneurisation`, level: 4, evidence: `NAS + station IA, déploiements OC` },
               { name: `LLM auto-hébergés (Ollama)`, level: 4, evidence: `usage quotidien` },
               { name: `Domotique (Home Assistant)`, level: 4, evidence: `stack vocal Wyoming` }
+            ]
+          },
+          {
+            id: `demo`, wide: true, title: `Démo & vulgarisation`,
+            skills: [
+              { name: `Gradio`, level: 3, evidence: `POC et démo du coach vocal (P15)` },
+              { name: `Streamlit`, level: 3, evidence: `démos data / ML légères` }
             ]
           }
         ],
@@ -123,6 +134,29 @@
           { title: `Communication multiculturelle`, proof: `trilingue FR / EN / ZH, équipes internationales et multiculturelles` },
           { title: `Pédagogie et vulgarisation`, proof: `supports d'étude trilingues, vulgarisation technique de sujets complexes` },
           { title: `Gestion de projet et arbitrage sous contrainte`, proof: `cadrage et arbitrages de périmètre (P9, P15)` }
+        ],
+        synthese: [
+          {
+            id: `infra-perso`,
+            title: `Infrastructure personnelle en production`,
+            lead: `Trois systèmes conçus, déployés et utilisés au quotidien à la maison, hors cadre scolaire.`,
+            items: [
+              { name: `LearnForge — révision espacée (FSRS)`, note: `Application de mémorisation développée et utilisée quotidiennement.` },
+              { name: `Stack vocal Whisper / Piper / Home Assistant`, note: `En production à la maison ; sert directement le projet P15.` },
+              { name: `ai-agent-system — orchestration d'agents IA`, note: `Workflows, tickets Linear, mémoire persistante.` }
+            ]
+          },
+          {
+            id: `fil-rouge`,
+            title: `Fil rouge — croisement unique`,
+            lead: `Neuf ans de discipline embarquée (mémoire en kilo-octets, temps réel, OTA, sécurité) croisés avec l'ingénierie IA complète : le projet P15 est littéralement la fusion des deux carrières.`,
+            items: [
+              { name: `Cortex-M / RTOS + fine-tuning de LLM`, note: `Très peu de profils maîtrisent les deux domaines.` },
+              { name: `Qualité automobile vers MLOps`, note: `Spécification, test, traçabilité se transposent directement : reproductibilité, audit, rollback.` },
+              { name: `Preuves d'autonomie`, note: `Infrastructure IA personnelle complète, projets personnels en production à la maison.` },
+              { name: `Trilingue FR / EN / ZH`, note: `Atout pour les équipes internationales et multiculturelles.` }
+            ]
+          }
         ]
       },
       projet: {
@@ -156,8 +190,7 @@
         methodText: `Sprint de 4 semaines piloté en mode équipe d'agents IA : décomposition en tickets Linear, agents de développement en parallèle, revue humaine systématique de chaque livraison avec quiz de compréhension du code. Décisions de périmètre tracées sur une échelle de descope prédéfinie.`,
         linksTitle: `Liens`,
         repoLabel: `Voir le dépôt public`,
-        reportLabel: `Rapport de conduite de projet`,
-        reportComingSoon: `à venir`
+        reportLink: `Rapport de conduite de projet (PDF)`
       },
       projetsOC: {
         kicker: `La bibliothèque des travaux`,
@@ -209,7 +242,7 @@
         kicker: `Le mot de la fin`,
         title: `Contact & objectif`,
         objectiveTitle: `Objectif professionnel`,
-        objectiveText: `Un poste d'AI Engineer à la croisée de l'IA embarquée (edge) et des systèmes auto-hébergés, là où la discipline de l'ingénierie temps réel rencontre l'ingénierie IA moderne.`,
+        objectiveText: `Un poste d'AI Engineer à la croisée de l'IA embarquée (edge) et des systèmes auto-hébergés, là où la discipline de l'ingénierie temps réel rencontre l'ingénierie IA moderne. Un intérêt particulier pour les applications en santé (agent de triage médical, P14).`,
         languagesTitle: `Langues`,
         linksTitle: `Liens`,
         githubLabel: `GitHub`,
@@ -243,8 +276,10 @@
         title: `Yang FEI`,
         brandLine: `笔名「Lesliam」`,
         subtext: `九年嵌入式 BLE 工程经验，如今转向全栈人工智能：毕业作品把两者融合成一台自托管的边缘语音终端。`,
+        objective: `正在寻找 AI 工程师岗位：边缘 AI 与自托管系统，尤其关注医疗健康（医疗分诊 agent，P14）。`,
         ctaProject: `查看最终项目（P15）`,
         ctaSkills: `查看技能`,
+        ctaContact: `联系我`,
         heroImgAlt: `Lesliam，作品集的吉祥物角色，站立微笑`,
         chapterTag: `第一章`
       },
@@ -285,25 +320,27 @@
       competences: {
         kicker: `工作坊`,
         title: `技能`,
-        intro: `四个技术分支与六项软技能，每一项都对应可验证的项目证据。以下掌握程度为个人评估结果。`,
-        atelierCaption: `工作台：四种工具，同一种质量文化。`,
-        atelierImgAlt: `Lesliam 在工作坊中忙碌，周围环绕着四个技能分支的工具。`,
+        intro: `五个技术分支与六项软技能，每一项都对应可验证的项目证据。以下掌握程度为个人评估结果。`,
+        atelierCaption: `工作台：不同的工具，同一种质量文化。`,
+        mindMapLink: `查看完整思维导图`,
+        atelierImgAlt: `Lesliam 在工作坊中忙碌，周围环绕着各个技能分支的工具。`,
         branches: [
           {
             id: `ia-ml`, title: `人工智能 / 机器学习`,
             skills: [
-              { name: `经典机器学习`, level: 5, evidence: `P3、P4、P5、P6、P8` },
+              { name: `经典机器学习`, level: 4, evidence: `P3、P4、P5、P6、P8` },
               { name: `计算机视觉`, level: 3, evidence: `P2、P10` },
               { name: `自然语言处理 / 大语言模型`, level: 4, evidence: `P7、P13、P14` },
               { name: `检索增强生成（RAG）`, level: 4, evidence: `P7` },
-              { name: `微调（SFT / DPO）`, level: 3, evidence: `P14 + 个人训练实验` },
+              { name: `LLM 智能体 · LangChain / LangGraph`, level: 4, evidence: `P7 · P13` },
+              { name: `微调（SFT / DPO）`, level: 4, evidence: `P14 + 个人训练实验` },
               { name: `强化学习`, level: 3, evidence: `P11` }
             ]
           },
           {
             id: `mlops`, title: `MLOps`,
             skills: [
-              { name: `MLflow —— 生命周期管理`, level: 3, evidence: `P6` },
+              { name: `MLflow —— 生命周期管理`, level: 4, evidence: `P6` },
               { name: `模型服务 API`, level: 4, evidence: `P5、P8` },
               { name: `模型量化`, level: 3, evidence: `Coach FR (P15)` },
               { name: `监控 / 漂移检测`, level: 3, evidence: `Coach FR (P15)` }
@@ -323,10 +360,17 @@
             id: `infra`, title: `基础设施 / 自托管`,
             skills: [
               { name: `Linux 系统管理`, level: 4, evidence: `自主管理的 CachyOS 工作站` },
-              { name: `GPU / 本地算力`, level: 3, evidence: `RTX 5080，本地微调` },
-              { name: `容器化`, level: 2, evidence: `仍在完善中` },
+              { name: `GPU / 本地算力`, level: 4, evidence: `RTX 5080，本地微调` },
+              { name: `Docker · 容器化`, level: 4, evidence: `NAS + AI 工作站，OC 项目部署` },
               { name: `自托管大语言模型（Ollama）`, level: 4, evidence: `日常使用` },
               { name: `智能家居（Home Assistant）`, level: 4, evidence: `Wyoming 语音技术栈` }
+            ]
+          },
+          {
+            id: `demo`, wide: true, title: `演示与技术科普`,
+            skills: [
+              { name: `Gradio`, level: 3, evidence: `P15 语音教练的 POC 与演示` },
+              { name: `Streamlit`, level: 3, evidence: `轻量数据 / ML 演示应用` }
             ]
           }
         ],
@@ -339,6 +383,29 @@
           { title: `跨文化沟通`, proof: `法语 / 英语 / 中文三语，跨国与多元文化团队协作` },
           { title: `教学能力与技术科普`, proof: `三语学习资料，将复杂技术讲解得通俗易懂` },
           { title: `约束条件下的项目管理与取舍`, proof: `项目范围界定与取舍（P9、P15）` }
+        ],
+        synthese: [
+          {
+            id: `infra-perso`,
+            title: `个人基础设施（生产运行中）`,
+            lead: `三套自行设计、部署并每日使用的家庭系统，均在课程范围之外。`,
+            items: [
+              { name: `LearnForge —— 间隔重复复习（FSRS）`, note: `自行开发并每日使用的记忆应用。` },
+              { name: `Whisper / Piper / Home Assistant 语音技术栈`, note: `在家中生产运行，直接服务于 P15 项目。` },
+              { name: `ai-agent-system —— AI 智能体编排`, note: `工作流、Linear 工单、持久化记忆。` }
+            ]
+          },
+          {
+            id: `fil-rouge`,
+            title: `主线 —— 独特的交叉点`,
+            lead: `九年嵌入式工程的严谨（KB 级内存预算、实时性、OTA、安全）与完整的人工智能工程能力相交叉：P15 项目正是两段职业生涯的融合。`,
+            items: [
+              { name: `Cortex-M / RTOS + 大语言模型微调`, note: `同时掌握这两个领域的人非常少。` },
+              { name: `汽车质量文化 → MLOps`, note: `规格、测试、可追溯性可直接迁移：可复现性、审计、回滚。` },
+              { name: `自主能力的证据`, note: `完整的个人 AI 基础设施，多个个人项目在家中生产运行。` },
+              { name: `三语：法语 / 英语 / 中文`, note: `面向国际化与多元文化团队的优势。` }
+            ]
+          }
         ]
       },
       projet: {
@@ -372,8 +439,7 @@
         methodText: `以「AI 智能体团队」模式推进的 4 周冲刺：拆解为 Linear 工单，多个开发智能体并行工作，每次交付都经过系统性的人工审查并附代码理解测验。范围调整决策沿预先设定的降级方案逐级记录。`,
         linksTitle: `相关链接`,
         repoLabel: `查看公开代码仓库`,
-        reportLabel: `项目管理报告`,
-        reportComingSoon: `即将发布`
+        reportLink: `项目管理报告（PDF）`
       },
       projetsOC: {
         kicker: `作品文库`,
@@ -425,7 +491,7 @@
         kicker: `结语`,
         title: `联系方式与职业目标`,
         objectiveTitle: `职业目标`,
-        objectiveText: `希望从事一个处于边缘 AI 与自托管系统交汇处的 AI 工程师岗位 —— 让实时工程的严谨性与现代 AI 工程相遇。`,
+        objectiveText: `希望从事一个处于边缘 AI 与自托管系统交汇处的 AI 工程师岗位 —— 让实时工程的严谨性与现代 AI 工程相遇。尤其关注医疗健康领域的应用（医疗分诊 agent，P14）。`,
         languagesTitle: `语言能力`,
         linksTitle: `相关链接`,
         githubLabel: `GitHub`,
@@ -459,8 +525,10 @@
         title: `Yang FEI`,
         brandLine: `aka "Lesliam"`,
         subtext: `Nine years of embedded BLE engineering, now AI engineering. The final project fuses both into a self-hosted edge voice terminal.`,
+        objective: `Seeking an AI Engineer role — edge AI and self-hosted systems, with a strong interest in healthcare (medical triage agent, P14).`,
         ctaProject: `See the final project (P15)`,
         ctaSkills: `See the skills`,
+        ctaContact: `Contact me`,
         heroImgAlt: `Lesliam, the portfolio mascot, standing and smiling`,
         chapterTag: `chapter one`
       },
@@ -501,25 +569,27 @@
       competences: {
         kicker: `The workshop`,
         title: `Skills`,
-        intro: `Four technical branches and six soft skills, each tied to the projects that prove them. The mastery levels below are an editorial self-assessment.`,
-        atelierCaption: `The workbench: four tools, one shared quality culture.`,
-        atelierImgAlt: `Lesliam at work in his workshop, surrounded by the tools of his four skill branches.`,
+        intro: `Five technical branches and six soft skills, each tied to the projects that prove them. The mastery levels below are an editorial self-assessment.`,
+        atelierCaption: `The workbench: different tools, one shared quality culture.`,
+        mindMapLink: `View the full mind map`,
+        atelierImgAlt: `Lesliam at work in his workshop, surrounded by the tools of his skill branches.`,
         branches: [
           {
             id: `ia-ml`, title: `AI / Machine Learning`,
             skills: [
-              { name: `Classic machine learning`, level: 5, evidence: `P3, P4, P5, P6, P8` },
+              { name: `Classic machine learning`, level: 4, evidence: `P3, P4, P5, P6, P8` },
               { name: `Computer vision`, level: 3, evidence: `P2, P10` },
               { name: `NLP / LLM`, level: 4, evidence: `P7, P13, P14` },
               { name: `RAG (retrieval-augmented generation)`, level: 4, evidence: `P7` },
-              { name: `Fine-tuning (SFT / DPO)`, level: 3, evidence: `P14 + personal runs` },
+              { name: `LLM agents · LangChain / LangGraph`, level: 4, evidence: `P7 · P13` },
+              { name: `Fine-tuning (SFT / DPO)`, level: 4, evidence: `P14 + personal runs` },
               { name: `Reinforcement learning`, level: 3, evidence: `P11` }
             ]
           },
           {
             id: `mlops`, title: `MLOps`,
             skills: [
-              { name: `MLflow (lifecycle)`, level: 3, evidence: `P6` },
+              { name: `MLflow (lifecycle)`, level: 4, evidence: `P6` },
               { name: `Serving API`, level: 4, evidence: `P5, P8` },
               { name: `Model quantization`, level: 3, evidence: `Coach FR (P15)` },
               { name: `Monitoring / drift`, level: 3, evidence: `Coach FR (P15)` }
@@ -539,10 +609,17 @@
             id: `infra`, title: `Infrastructure / self-hosting`,
             skills: [
               { name: `Linux administration`, level: 4, evidence: `self-managed CachyOS workstation` },
-              { name: `GPU / local compute`, level: 3, evidence: `RTX 5080, local fine-tuning` },
-              { name: `Containerization`, level: 2, evidence: `still consolidating` },
+              { name: `GPU / local compute`, level: 4, evidence: `RTX 5080, local fine-tuning` },
+              { name: `Docker · containerization`, level: 4, evidence: `NAS + AI workstation, OC deployments` },
               { name: `Self-hosted LLMs (Ollama)`, level: 4, evidence: `daily use` },
               { name: `Home automation (Home Assistant)`, level: 4, evidence: `Wyoming voice stack` }
+            ]
+          },
+          {
+            id: `demo`, wide: true, title: `Demo & technical communication`,
+            skills: [
+              { name: `Gradio`, level: 3, evidence: `voice coach POC and demo (P15)` },
+              { name: `Streamlit`, level: 3, evidence: `lightweight data / ML demos` }
             ]
           }
         ],
@@ -555,6 +632,29 @@
           { title: `Cross-cultural communication`, proof: `trilingual FR/EN/ZH, international and multicultural teams` },
           { title: `Teaching and technical communication`, proof: `trilingual study guides, explaining complex tech simply` },
           { title: `Project management and trade-offs under constraint`, proof: `scoping and trade-offs (P9, P15)` }
+        ],
+        synthese: [
+          {
+            id: `infra-perso`,
+            title: `Personal infrastructure in production`,
+            lead: `Three systems designed, deployed and used every day at home, outside any coursework.`,
+            items: [
+              { name: `LearnForge — spaced repetition (FSRS)`, note: `A memorization app built and used daily.` },
+              { name: `Whisper / Piper / Home Assistant voice stack`, note: `Running in production at home; it directly serves the P15 project.` },
+              { name: `ai-agent-system — AI agent orchestration`, note: `Workflows, Linear tickets, persistent memory.` }
+            ]
+          },
+          {
+            id: `fil-rouge`,
+            title: `The through line — a rare crossing`,
+            lead: `Nine years of embedded discipline (kilobyte memory budgets, real time, OTA, security) crossed with full AI engineering: P15 is literally the fusion of both careers.`,
+            items: [
+              { name: `Cortex-M / RTOS + LLM fine-tuning`, note: `Very few profiles cover both fields.` },
+              { name: `Automotive quality to MLOps`, note: `Specification, test and traceability transfer directly: reproducibility, audit, rollback.` },
+              { name: `Autonomy, evidenced`, note: `A complete personal AI infrastructure, personal projects running in production at home.` },
+              { name: `Trilingual FR / EN / ZH`, note: `An asset for international, multicultural teams.` }
+            ]
+          }
         ]
       },
       projet: {
@@ -588,8 +688,7 @@
         methodText: `A 4-week sprint run in an AI-agent-team mode: decomposition into Linear tickets, parallel development agents, systematic human review of every delivery with a code-comprehension quiz. Scope decisions tracked against a predefined descope ladder.`,
         linksTitle: `Links`,
         repoLabel: `View the public repository`,
-        reportLabel: `Project management report`,
-        reportComingSoon: `coming soon`
+        reportLink: `Project management report (PDF)`
       },
       projetsOC: {
         kicker: `The library of works`,
@@ -641,7 +740,7 @@
         kicker: `The closing word`,
         title: `Contact & objective`,
         objectiveTitle: `Professional objective`,
-        objectiveText: `An AI Engineer role at the intersection of edge AI and self-hosted systems, where the discipline of real-time engineering meets modern AI engineering.`,
+        objectiveText: `An AI Engineer role at the intersection of edge AI and self-hosted systems, where the discipline of real-time engineering meets modern AI engineering. With a particular interest in healthcare applications (medical triage agent, P14).`,
         languagesTitle: `Languages`,
         linksTitle: `Links`,
         githubLabel: `GitHub`,

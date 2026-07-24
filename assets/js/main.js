@@ -108,7 +108,25 @@
       + `<rect x="9" y="2" width="16" height="22" rx="1.5"/>`
       + `<path d="M12 6h7M12 10h7"/>`
       + `<circle cx="22" cy="6" r="0.9"/><circle cx="22" cy="10" r="0.9"/>`
-      + `<circle cx="17" cy="16" r="2.2"/><circle cx="17" cy="20.5" r="0.9"/></svg>`
+      + `<circle cx="17" cy="16" r="2.2"/><circle cx="17" cy="20.5" r="0.9"/></svg>`,
+    /* Démo & vulgarisation: a browser frame with a play triangle -- an
+       interactive demo someone can open and try. */
+    "demo": `<svg width="34" height="26" viewBox="0 0 34 26" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">`
+      + `<rect x="4" y="4" width="26" height="18" rx="2"/>`
+      + `<path d="M4 9h26"/>`
+      + `<circle cx="7.5" cy="6.5" r="0.7"/><circle cx="10.5" cy="6.5" r="0.7"/>`
+      + `<path d="M9 14h7M9 18h4"/>`
+      + `<path d="M21 13.5l5 3-5 3z"/></svg>`,
+    /* Synthesis cards (same card markup as the skill branches): a house
+       sheltering a chip for the self-hosted personal infrastructure, two
+       crossing strands for the through line between both careers. */
+    "infra-perso": `<svg width="34" height="26" viewBox="0 0 34 26" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">`
+      + `<path d="M4 12l13-9 13 9"/><path d="M7 11v11h20V11"/>`
+      + `<rect x="13" y="14" width="8" height="6" rx="1"/>`
+      + `<path d="M13 16h-2M13 18.5h-2M21 16h2M21 18.5h2"/></svg>`,
+    "fil-rouge": `<svg width="34" height="26" viewBox="0 0 34 26" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">`
+      + `<path d="M4 5c9 1 8 15 26 16"/><path d="M4 21c9-1 8-15 26-16"/>`
+      + `<circle cx="17" cy="13" r="1.8"/></svg>`
   };
 
   /* Line-art glyphs for the Projets OC grid, one per featured project code.
@@ -162,7 +180,9 @@
     if (!container) return;
     clearChildren(container);
     dict.competences.branches.forEach(function (branch) {
-      var card = el(`article`, `branch-card`);
+      /* A branch flagged `wide` spans the whole grid row instead of taking a
+         column, so the symmetric four-card row above it stays intact. */
+      var card = el(`article`, `branch-card` + (branch.wide ? ` branch-card--wide` : ``));
       var head = el(`div`, `branch-card__head`);
       var glyph = el(`span`, `branch-card__glyph`);
       glyph.setAttribute(`aria-hidden`, `true`);
@@ -171,6 +191,7 @@
       card.appendChild(head);
       card.appendChild(el(`h3`, `branch-card__title`, branch.title));
       var ul = el(`ul`, `branch-card__skills`);
+      ul.setAttribute(`role`, `list`);
       branch.skills.forEach(function (skill) {
         var li = el(`li`, `skill-row`);
         var top = el(`div`, `skill-row__top`);
@@ -182,6 +203,44 @@
       });
       card.appendChild(ul);
       container.appendChild(card);
+    });
+  }
+
+  /* Synthesis cards closing the Compétences section: the personal
+     infrastructure running in production, and the through line between the
+     embedded and AI careers. Same card markup as the skill branches, minus
+     the 1-5 level bars -- these entries are facts, not self-assessed levels. */
+  function renderSynthese(dict) {
+    var container = document.getElementById(`synthese-list`);
+    if (!container) return;
+    clearChildren(container);
+    (dict.competences.synthese || []).forEach(function (card) {
+      var article = el(`article`, `branch-card`);
+
+      var head = el(`div`, `branch-card__head`);
+      var glyph = el(`span`, `branch-card__glyph`);
+      glyph.setAttribute(`aria-hidden`, `true`);
+      glyph.innerHTML = BRANCH_GLYPH[card.id] || ``;
+      head.appendChild(glyph);
+      article.appendChild(head);
+
+      article.appendChild(el(`h3`, `branch-card__title`, card.title));
+      if (card.lead) article.appendChild(el(`p`, `card-note`, card.lead));
+
+      /* display:flex / display:grid drops the implicit list semantics in some
+         screen readers -- same explicit role as the OC index list. */
+      var ul = el(`ul`, `branch-card__skills`);
+      ul.setAttribute(`role`, `list`);
+      (card.items || []).forEach(function (item) {
+        var li = el(`li`, `skill-row`);
+        var top = el(`div`, `skill-row__top`);
+        top.appendChild(el(`span`, `skill-row__name`, item.name));
+        li.appendChild(top);
+        li.appendChild(el(`p`, `card-note`, item.note));
+        ul.appendChild(li);
+      });
+      article.appendChild(ul);
+      container.appendChild(article);
     });
   }
 
@@ -252,6 +311,7 @@
       article.appendChild(el(`p`, `oc-card__desc`, card.desc));
 
       var tags = el(`ul`, `oc-card__tags`);
+      tags.setAttribute(`role`, `list`);
       card.tags.forEach(function (tag) {
         tags.appendChild(el(`li`, null, tag));
       });
@@ -329,6 +389,7 @@
     renderLanguagesList(`contact-languages-list`, dict);
     renderBranches(dict, lang);
     renderSoftSkills(dict);
+    renderSynthese(dict);
     renderArchDescription(dict);
     renderPillarSteps(dict);
     renderOCCards(dict);

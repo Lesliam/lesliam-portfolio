@@ -39,14 +39,21 @@ This folder is deploy-ready as-is:
 
 ```
 portfolio/
-  index.html            single-page markup, 7 sections + nav + modal
+  index.html            single-page markup, 6 sections (hero, parcours,
+                          competences, projets OC, reflexivite, contact) + nav
   assets/
     css/styles.css       design system (palette, type, layout, components)
     js/i18n.js            FR/ZH/EN dictionary + language-switch engine
-    js/main.js             nav, dynamic section rendering, scroll reveal, modal
-    js/mascot.js            cursor-follower companion + section pose state-machine
-    mascot/                 the 8 mascot PNGs (waving, laptop, presenting, thinking,
-                             pointing, hero, thumbsup, motif)
+    js/main.js             nav, dynamic section rendering, scroll reveal, theme
+    arch/                   3 architecture illustrations, one per language
+    mascot/                 8 mascot poses available (waving, laptop, presenting,
+                             thinking, pointing, hero, thumbsup, motif); the page
+                             currently uses 3 of them (hero, waving, pointing) and
+                             keeps the others for future sections
+      eras/                  5 parcours scenes (formation, early stages, embedded,
+                              AI reconversion, atelier)
+    docs/                   linked deliverables: the project management report
+                             (PDF) and the rendered mind map (HTML)
   README.md
 ```
 
@@ -63,24 +70,31 @@ on load and on language switch.
 
 ## Accessibility notes
 
-- Keyboard: all interactive elements (nav, language switcher, mascot
-  toggle, modal, `<details>` disclosures) are reachable and operable via
-  keyboard; the memo modal traps focus and restores it to the trigger on
-  close.
-- `prefers-reduced-motion: reduce` disables the cursor-follow effect, the
-  section-triggered pose swap animation, and scroll-reveal motion — the
-  mascot companion falls back to a single static pose.
-- The floating mascot companion is purely decorative (`aria-hidden`) and
-  uses `pointer-events: none`, so it can never intercept clicks or block
-  keyboard/screen-reader navigation. A persisted toggle in the nav bar
-  turns it off entirely.
-- On touch devices the cursor-follow lean is skipped (no pointer to
-  track); the section-pose swap still runs. The floating companion is
-  hidden below 720px width so it cannot cover content on small screens.
+- Keyboard: all interactive elements (skip link, nav and burger menu,
+  language switcher, theme toggle, links, `<details>` disclosures in
+  Réflexivité) are reachable and operable via keyboard, with a visible
+  focus ring.
+- `prefers-reduced-motion: reduce` disables the scroll-reveal motion, the
+  hero parallax, smooth anchor scrolling and every transition; content is
+  shown immediately instead.
+- Without JavaScript, the `.no-js` fallback keeps every section fully
+  visible (the reveal animation is the only thing lost).
+- A language switch is announced through an `aria-live` region; the
+  mastery levels are exposed as `role="img"` with a textual label
+  ("Niveau N sur 5") rather than as decorative dots only.
+- The architecture illustration has both an `alt` text and a longer
+  text-equivalent description wired via `aria-describedby`; the mascot
+  and era illustrations are decorative or carry a descriptive `alt`.
+- Links opening a new tab carry a visually-hidden "opens in a new tab"
+  hint.
 
 ## Known gaps for the next iteration
 
-See the final build report for the full list (rapport link is an
-intentional "à venir" placeholder; LinkedIn link likewise; project
-mastery levels in Compétences are an editorial self-assessment pending
-Lesliam's review).
+- Mastery levels in Compétences are an editorial self-assessment,
+  reconciled with `deliverables/carte_mentale/carte_mentale.mm` (the
+  authoritative source). Where the two differ, the site is a
+  finer-grained superset rather than a contradiction: it splits some
+  mind-map nodes (6 soft skills against 5 merged nodes) and rates a few
+  rows the mind map leaves unrated.
+- The LinkedIn URL in the Contact section should be confirmed before
+  publication.

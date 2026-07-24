@@ -182,6 +182,8 @@ a:hover { color: var(--color-terracotta-text); }
 .kicker::before { content: ""; width: 30px; height: 2px; background: var(--color-terracotta); border-radius: 2px; }
 .section-head h2 { font-family: var(--font-narr); font-weight: 700; font-size: clamp(1.9rem, 3.2vw, 2.6rem); }
 .section-head p { font-family: var(--font-narr); font-size: 1.06rem; color: var(--color-ink-soft); }
+/* Discreet cross-reference line under a section intro (e.g. the full mind map). */
+.section-head__link { font-size: 0.95rem; margin-bottom: 0; }
 
 /* Section-level reveal: a single gentle fade + lift, triggered once when the
    section first enters the viewport (see initReveal in main.js). Children of
@@ -234,7 +236,6 @@ a:hover { color: var(--color-terracotta-text); }
 .btn--primary:hover { background: var(--color-terracotta-deep); color: var(--color-inverted-text); transform: translateY(-2px); box-shadow: var(--shadow-card); }
 .btn--secondary { background: transparent; border-color: var(--color-ink); color: var(--color-ink); }
 .btn--secondary:hover { background: var(--color-inverted-bg); border-color: var(--color-inverted-bg); color: var(--color-inverted-text); }
-.btn--disabled { background: var(--color-paper-deep); color: var(--color-ink-faint); cursor: not-allowed; }
 
 /* -------------------------------- header --------------------------------- */
 
@@ -310,6 +311,18 @@ a:hover { color: var(--color-terracotta-text); }
 .hero__subtext::first-letter {
   float: left; font-size: 3em; line-height: 0.78; font-weight: 700;
   color: var(--color-terracotta); padding: 0.03em 0.1em 0 0;
+}
+/* Positioning badge: surfaces the job-search intent right under the hero
+   subtext. Terracotta-soft chip (the same accent-on-soft pair used by the
+   pillar step numbers), left accent bar echoing .eyebrow. Both themes follow
+   automatically via the variables; no animation. */
+.hero__objective {
+  display: inline-block; max-width: 44ch; margin-top: 1.25rem;
+  font-family: var(--font-display); font-size: 0.98rem; font-weight: 600;
+  line-height: 1.4; color: var(--color-terracotta-on-soft);
+  background: var(--color-terracotta-soft);
+  border-left: 3px solid var(--color-terracotta);
+  border-radius: var(--radius-s); padding: 0.7rem 1rem;
 }
 .hero__ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
 .hero__figure {
@@ -460,6 +473,20 @@ a:hover { color: var(--color-terracotta-text); }
 .skill-row__top { display: flex; justify-content: space-between; align-items: baseline; gap: 0.75rem; flex-wrap: wrap; }
 .skill-row__name { font-weight: 600; }
 .skill-row__evidence { font-size: 0.78rem; color: var(--color-ink-faint); font-family: var(--font-mono); }
+/* Fifth branch (Démo & vulgarisation, added after the original four): it
+   spans the full grid width so the symmetric 1x4 row above stays intact,
+   and lays its two skills side by side inside that wider card. */
+.branch-card--wide { grid-column: 1 / -1; }
+.branch-card--wide .branch-card__skills { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem 1.5rem; }
+
+/* Two-up variant of the same grid, for the synthesis cards closing the
+   section (personal infrastructure / through line). */
+.branches--pair { grid-template-columns: repeat(2, 1fr); margin-top: 2.5rem; margin-bottom: 0; }
+
+/* Short explanatory line under a card title or a card row, in the same
+   quieter voice as .soft-skill__proof. */
+.card-note { font-size: 0.9rem; color: var(--color-ink-soft); margin: 0.15rem 0 0; }
+
 .skill-bar { display: flex; gap: 5px; margin-top: 0.4rem; }
 .skill-bar__dot { width: 16px; height: 8px; border-radius: 4px; background: var(--color-paper-deep); }
 .skill-bar__dot--filled { background: var(--accent); }
@@ -694,6 +721,7 @@ a:hover { color: var(--color-terracotta-text); }
 
 @media (max-width: 560px) {
   .branches { grid-template-columns: 1fr; }
+  .branch-card--wide .branch-card__skills { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 860px) {
