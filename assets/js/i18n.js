@@ -27,7 +27,7 @@
         title: `Yang FEI`,
         brandLine: `alias « Lesliam »`,
         subtext: `Neuf ans d'ingénierie embarquée BLE, aujourd'hui ingénierie IA complète : le projet final fusionne les deux dans un terminal vocal auto-hébergé.`,
-        objective: `En recherche d'un poste d'AI Engineer — IA embarquée (edge) et systèmes auto-hébergés, avec un fort intérêt pour la santé (agent de triage médical, P14).`,
+        objective: `En recherche d'un poste d'AI Engineer — IA embarquée (edge) et systèmes auto-hébergés, avec un fort intérêt pour la santé (IRM cérébrales P10, agent de triage médical P14).`,
         ctaProject: `Voir le projet final (P15)`,
         ctaSkills: `Voir les compétences`,
         ctaContact: `Me contacter`,
@@ -93,8 +93,10 @@
             skills: [
               { name: `MLflow (cycle de vie)`, level: 4, evidence: `P6` },
               { name: `API de serving`, level: 4, evidence: `P5, P8` },
+              { name: `CI/CD · GitHub Actions`, level: 4, evidence: `P5 · P8 · P14` },
               { name: `Quantification de modèles`, level: 3, evidence: `Coach FR (P15)` },
-              { name: `Monitoring / dérive`, level: 3, evidence: `Coach FR (P15)` }
+              { name: `Monitoring · dérive (Evidently)`, level: 4, evidence: `P8` },
+              { name: `RGPD · anonymisation`, level: 3, evidence: `P14` }
             ]
           },
           {
@@ -243,7 +245,7 @@
         kicker: `Le mot de la fin`,
         title: `Contact & objectif`,
         objectiveTitle: `Objectif professionnel`,
-        objectiveText: `Un poste d'AI Engineer à la croisée de l'IA embarquée (edge) et des systèmes auto-hébergés, là où la discipline de l'ingénierie temps réel rencontre l'ingénierie IA moderne. Un intérêt particulier pour les applications en santé (agent de triage médical, P14).`,
+        objectiveText: `Un poste d'AI Engineer à la croisée de l'IA embarquée (edge) et des systèmes auto-hébergés, là où la discipline de l'ingénierie temps réel rencontre l'ingénierie IA moderne. Un intérêt particulier pour les applications en santé (IRM cérébrales P10, agent de triage médical P14).`,
         languagesTitle: `Langues`,
         linksTitle: `Liens`,
         githubLabel: `GitHub`,
@@ -277,7 +279,7 @@
         title: `费洋`,
         brandLine: `笔名「Lesliam」`,
         subtext: `九年嵌入式 BLE 工程经验，如今转向全栈人工智能：毕业作品把两者融合成一台自托管的边缘语音终端。`,
-        objective: `正在寻找 AI 工程师岗位：边缘 AI 与自托管系统，尤其关注医疗健康（医疗分诊 agent，P14）。`,
+        objective: `正在寻找 AI 工程师岗位：边缘 AI 与自托管系统，尤其关注医疗健康（P10 脑部 MRI、P14 医疗分诊 agent）。`,
         ctaProject: `查看最终项目（P15）`,
         ctaSkills: `查看技能`,
         ctaContact: `联系我`,
@@ -343,8 +345,10 @@
             skills: [
               { name: `MLflow —— 生命周期管理`, level: 4, evidence: `P6` },
               { name: `模型服务 API`, level: 4, evidence: `P5、P8` },
+              { name: `CI/CD · GitHub Actions`, level: 4, evidence: `P5 · P8 · P14` },
               { name: `模型量化`, level: 3, evidence: `Coach FR (P15)` },
-              { name: `监控 / 漂移检测`, level: 3, evidence: `Coach FR (P15)` }
+              { name: `监控 · 漂移检测（Evidently）`, level: 4, evidence: `P8` },
+              { name: `GDPR · 匿名化`, level: 3, evidence: `P14` }
             ]
           },
           {
@@ -493,7 +497,7 @@
         kicker: `结语`,
         title: `联系方式与职业目标`,
         objectiveTitle: `职业目标`,
-        objectiveText: `希望从事一个处于边缘 AI 与自托管系统交汇处的 AI 工程师岗位 —— 让实时工程的严谨性与现代 AI 工程相遇。尤其关注医疗健康领域的应用（医疗分诊 agent，P14）。`,
+        objectiveText: `希望从事一个处于边缘 AI 与自托管系统交汇处的 AI 工程师岗位 —— 让实时工程的严谨性与现代 AI 工程相遇。尤其关注医疗健康领域的应用（P10 脑部 MRI、P14 医疗分诊 agent）。`,
         languagesTitle: `语言能力`,
         linksTitle: `相关链接`,
         githubLabel: `GitHub`,
@@ -527,7 +531,7 @@
         title: `Yang FEI`,
         brandLine: `aka "Lesliam"`,
         subtext: `Nine years of embedded BLE engineering, now AI engineering. The final project fuses both into a self-hosted edge voice terminal.`,
-        objective: `Seeking an AI Engineer role — edge AI and self-hosted systems, with a strong interest in healthcare (medical triage agent, P14).`,
+        objective: `Seeking an AI Engineer role — edge AI and self-hosted systems, with a strong interest in healthcare (brain-MRI classification P10, medical triage agent P14).`,
         ctaProject: `See the final project (P15)`,
         ctaSkills: `See the skills`,
         ctaContact: `Contact me`,
@@ -593,8 +597,10 @@
             skills: [
               { name: `MLflow (lifecycle)`, level: 4, evidence: `P6` },
               { name: `Serving API`, level: 4, evidence: `P5, P8` },
+              { name: `CI/CD · GitHub Actions`, level: 4, evidence: `P5 · P8 · P14` },
               { name: `Model quantization`, level: 3, evidence: `Coach FR (P15)` },
-              { name: `Monitoring / drift`, level: 3, evidence: `Coach FR (P15)` }
+              { name: `Monitoring · drift (Evidently)`, level: 4, evidence: `P8` },
+              { name: `GDPR · anonymization`, level: 3, evidence: `P14` }
             ]
           },
           {
@@ -743,7 +749,7 @@
         kicker: `The closing word`,
         title: `Contact & objective`,
         objectiveTitle: `Professional objective`,
-        objectiveText: `An AI Engineer role at the intersection of edge AI and self-hosted systems, where the discipline of real-time engineering meets modern AI engineering. With a particular interest in healthcare applications (medical triage agent, P14).`,
+        objectiveText: `An AI Engineer role at the intersection of edge AI and self-hosted systems, where the discipline of real-time engineering meets modern AI engineering. With a particular interest in healthcare applications (brain-MRI classification P10, medical triage agent P14).`,
         languagesTitle: `Languages`,
         linksTitle: `Links`,
         githubLabel: `GitHub`,
