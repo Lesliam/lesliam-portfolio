@@ -257,7 +257,7 @@
 
     zh: {
       nav: {
-        brandName: `Yang FEI`,
+        brandName: `费洋`,
         brandTag: `Lesliam · AI 工程师`,
         links: {
           parcours: `职业历程`,
@@ -273,7 +273,7 @@
       },
       hero: {
         eyebrow: `AI 工程师，从嵌入式转型到人工智能`,
-        title: `Yang FEI`,
+        title: `费洋`,
         brandLine: `笔名「Lesliam」`,
         subtext: `九年嵌入式 BLE 工程经验，如今转向全栈人工智能：毕业作品把两者融合成一台自托管的边缘语音终端。`,
         objective: `正在寻找 AI 工程师岗位：边缘 AI 与自托管系统，尤其关注医疗健康（医疗分诊 agent，P14）。`,
@@ -496,7 +496,7 @@
         linksTitle: `相关链接`,
         githubLabel: `GitHub`,
         linkedinLabel: `LinkedIn`,
-        footerNote: `Yang FEI · 笔名 Lesliam · AI 工程师作品集 2026`
+        footerNote: `费洋 · 笔名 Lesliam · AI 工程师作品集 2026`
       },
       common: {
         skipToContent: `跳转到主要内容`,
